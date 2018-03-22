@@ -15,7 +15,10 @@
 		82A789072062F00E000CE57B /* ConwayPrjTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A789062062F00E000CE57B /* ConwayPrjTests.swift */; };
 		82A789122062F00E000CE57B /* ConwayPrjUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A789112062F00E000CE57B /* ConwayPrjUITests.swift */; };
 		82A789212062F054000CE57B /* ConwayMdl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A789202062F054000CE57B /* ConwayMdl.swift */; };
-		82A7892720630899000CE57B /* MyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A7892620630899000CE57B /* MyCollectionViewCell.swift */; };
+		82A7892920642855000CE57B /* Square.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A7892820642855000CE57B /* Square.swift */; };
+		82A7892B206428D5000CE57B /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A7892A206428D5000CE57B /* Board.swift */; };
+		82A7892D20642986000CE57B /* SquareButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A7892C20642986000CE57B /* SquareButton.swift */; };
+		82A7892F206436BF000CE57B /* ConwayGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A7892E206436BF000CE57B /* ConwayGame.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,7 +53,10 @@
 		82A789112062F00E000CE57B /* ConwayPrjUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConwayPrjUITests.swift; sourceTree = "<group>"; };
 		82A789132062F00E000CE57B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		82A789202062F054000CE57B /* ConwayMdl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConwayMdl.swift; sourceTree = "<group>"; };
-		82A7892620630899000CE57B /* MyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCollectionViewCell.swift; sourceTree = "<group>"; };
+		82A7892820642855000CE57B /* Square.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Square.swift; sourceTree = "<group>"; };
+		82A7892A206428D5000CE57B /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
+		82A7892C20642986000CE57B /* SquareButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquareButton.swift; sourceTree = "<group>"; };
+		82A7892E206436BF000CE57B /* ConwayGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConwayGame.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,12 +107,15 @@
 		82A788F02062F00E000CE57B /* ConwayPrj */ = {
 			isa = PBXGroup;
 			children = (
-				82A7892620630899000CE57B /* MyCollectionViewCell.swift */,
+				82A7892C20642986000CE57B /* SquareButton.swift */,
+				82A7892A206428D5000CE57B /* Board.swift */,
 				82A7891F2062F023000CE57B /* Support */,
 				82A788F32062F00E000CE57B /* ViewController.swift */,
 				82A788F52062F00E000CE57B /* Main.storyboard */,
+				82A7892820642855000CE57B /* Square.swift */,
 				82A788FD2062F00E000CE57B /* Info.plist */,
 				82A789202062F054000CE57B /* ConwayMdl.swift */,
+				82A7892E206436BF000CE57B /* ConwayGame.swift */,
 			);
 			path = ConwayPrj;
 			sourceTree = "<group>";
@@ -273,9 +282,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				82A7892920642855000CE57B /* Square.swift in Sources */,
 				82A789212062F054000CE57B /* ConwayMdl.swift in Sources */,
+				82A7892B206428D5000CE57B /* Board.swift in Sources */,
 				82A788F42062F00E000CE57B /* ViewController.swift in Sources */,
-				82A7892720630899000CE57B /* MyCollectionViewCell.swift in Sources */,
+				82A7892D20642986000CE57B /* SquareButton.swift in Sources */,
+				82A7892F206436BF000CE57B /* ConwayGame.swift in Sources */,
 				82A788F22062F00E000CE57B /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

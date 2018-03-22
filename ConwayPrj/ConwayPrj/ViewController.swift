@@ -8,11 +8,129 @@
 
 import UIKit
 
-class ViewController:  UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+class ViewController:  UIViewController {
+    
+    @IBOutlet weak var boardView: UIView!
+    @IBOutlet weak var movesLabel: UILabel!
+    // @IBOutlet weak var timeLabel: UILabel!
+    
+    // var board:Board
+    
+    var gameLogic:ConwayGame?
+    
+    var timer:Timer?
+    
+    var squareButtons:[SquareButton] = []
+
+    func initializeBoard() {
+        // gameLogic?.initWorld()
+        gameLogic = ConwayGame()
+        if var world = gameLogic?.world {
+            let worldSize = gameLogic!.worldSize
+            for row in 0 ..< worldSize {
+                var line:[SquareButton] = []
+                for col in 0 ..< worldSize {
+                    // let square = world[row][col]
+                    let square = Square(row: row, col: col)
+                    let squareSize:CGFloat = self.boardView.frame.width / CGFloat(worldSize)
+                    let squareButton = SquareButton(squareModel: square, squareSize: squareSize, squareMargin1: 1.0);
+                    squareButton.setTitleColor(UIColor.darkGray, for: .normal)
+                    squareButton.addTarget(self, action: #selector(ViewController.squareButtonPressed(_:)), for: .touchUpInside) //fix onTapGesture(gesture:)
+                    self.boardView.addSubview(squareButton)
+                    self.squareButtons.append(squareButton)
+                    line.append(squareButton)
+                }
+                // append line of squares to game
+                world.append(line)
+            }
+            gameLogic?.world = world
+        }
+        
+    }
+    
+    @objc func squareButtonPressed(_ sender: SquareButton) {
+        if(sender.square.live) {
+            sender.backgroundColor = .white
+        } else {
+            sender.backgroundColor = .black
+        }
+        gameLogic?.toggleCell(line: sender.square.row, col: sender.square.col)
+    }
+
+    func resetBoard() {
+        // resets the board with new mine locations & sets isRevealed to false for each square
+        // self.gameLogic?.initWorld()
+        // iterates through each button and resets the text to the default value
+        for squareButton in self.squareButtons {
+            squareButton.backgroundColor = .white
+        }
+    }
+
+    func startNewGame() {
+        //start new game
+        if let status = self.gameLogic?.gameStatus {
+            switch status {
+            case .RUNNING:
+                self.gameLogic?.gameStatus = .PAUSED
+                break
+            case .STOPPED:
+                self.gameLogic?.gameStatus = .RUNNING
+                runTimer()
+            case .PAUSED:
+                self.gameLogic?.gameStatus = .RUNNING
+                runTimer()
+            }
+        } else {
+            // self.resetBoard()
+            self.gameLogic?.gameStatus = .RUNNING
+            runTimer()
+        }
+        
+    }
+    
+    func runTimer() {
+        // DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            self.timer = Timer.scheduledTimer(
+                timeInterval: 1.0, target: self, selector: #selector(ViewController.advanceGeneration),
+                userInfo: nil, repeats: true)
+            self.gameLogic?.gameStatus = .RUNNING
+        // }
+    }
+    
+    required init?(coder aDecoder: NSCoder)
+    {
+        // self.board = Board(size: BOARD_SIZE)
+        // gameLogic = ConwayGame()
+        super.init(coder: aDecoder)
+    }
+    
+    // REMARK: run generation and update status in the view
+    @objc func advanceGeneration() {
+        if let status = self.gameLogic?.gameStatus {
+            switch status {
+            case .RUNNING:
+                self.gameLogic?.runGeneration()
+                //print("advance next its running")
+            case .STOPPED:
+                self.timer?.invalidate()
+                //print("stop")
+            case .PAUSED:
+                self.timer?.invalidate()
+                //print("paused game do nothing")
+            }
+        }
+    }
+    
+    @IBAction func newGamePressed() {
+        print("new game");
+        self.startNewGame()
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        self.initializeBoard()
+        // self.startNewGame()
     }
 
     override func didReceiveMemoryWarning() {
@@ -20,47 +138,5 @@ class ViewController:  UIViewController, UICollectionViewDataSource, UICollectio
         // Dispose of any resources that can be recreated.
     }
 
-    let reuseIdentifier = "cell" // also enter this string as the cell identifier in the storyboard
-    var items = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48"]
-    
-    
-    // MARK: - UICollectionViewDataSource protocol
-    
-    // tell the collection view how many cells to make
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.items.count
-    }
-    
-    // make a cell for each cell index path
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        // get a reference to our storyboard cell
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath as IndexPath) as! MyCollectionViewCell
-        
-        // Use the outlet in our custom class to get a reference to the UILabel in the cell
-        cell.myLabel.text = self.items[indexPath.item]
-        cell.backgroundColor = UIColor.white // make cell more visible in our example project
-        cell.layer.borderColor = UIColor.black.cgColor
-        cell.layer.borderWidth = 1
-        return cell
-    }
-    
-    // MARK: - UICollectionViewDelegate protocol
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        // handle tap events
-        print("You selected cell #\(indexPath.item)!")
-    }
-    
-    // change background color when user touches cell
-    func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
-        let cell = collectionView.cellForItem(at: indexPath)
-        if cell?.backgroundColor == UIColor.black {
-           cell?.backgroundColor = UIColor.white
-        } else {
-            cell?.backgroundColor = UIColor.black
-        }
-    }
-    
 }
 
