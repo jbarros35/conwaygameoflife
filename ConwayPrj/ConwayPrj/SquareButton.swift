@@ -11,8 +11,8 @@ import Foundation
 import UIKit
 class SquareButton : UIButton {
     
-    let squareSize:CGFloat
-    let squareMargin:CGFloat
+    var squareSize:CGFloat
+    var squareMargin:CGFloat
     var square:Square
     
     init(squareModel:Square, squareSize:CGFloat, squareMargin1:CGFloat) {
@@ -28,6 +28,10 @@ class SquareButton : UIButton {
         self.layer.borderColor = UIColor.black.cgColor
     }
 
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesMoved(touches, with: event)
+    }
+    
     func change(_ state:Bool) {
         self.backgroundColor = state ? .black : .white
         square.live = state
