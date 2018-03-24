@@ -13,17 +13,23 @@ Any live cell with two or three live neighbours lives on to the next generation.
 Any live cell with more than three live neighbours dies, as if by overpopulation.
 Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.
 ```
+![Conway Game of Life](https://ibb.co/b5vg0S)
 
 Place your creatures into cells, play the button and watch amazing patterns forming.
 ```
 If game world is empty cells the game ends whith a message.
 If after 5 generations, game detects the same patterns repeating it stops and will not continue if there isn't any evolution on the creatures.
 ```
+
+![Conway Game of Life](https://ibb.co/hHpVun)
+
 ### Prerequisites
 
 Requires IOS 10 or earlier, tested on Iphone 6, 6S, SE, 8 or earlier versions.
 
 For development requires XCode 9, Swift 4.0, MacOs High Sierra or earlier.
+
+![XCode 9](https://ibb.co/gOiC77)
 
 
 ### And coding style tests
