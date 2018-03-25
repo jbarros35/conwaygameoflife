@@ -14,7 +14,7 @@ class ViewController:  UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var movesLabel: UILabel!
     @IBOutlet weak var myView: UIView!
     
-    var gameLogic:ConwayGame?
+    var gameLogic:ConwayGamePtcl?
     
     // start pause button
     @IBOutlet weak var controlButton: UISwitch!
@@ -26,15 +26,13 @@ class ViewController:  UIViewController, UIScrollViewDelegate {
     func initializeBoard() {
         gameLogic = ConwayGame()
         gameLogic?.worldSize = 100
-        gameLogic?.gameStatus = .STOPPED
+        gameLogic?.changeStatus(status: .STOPPED)
         if var world = gameLogic?.world {
             let worldSize = gameLogic!.worldSize
             for row in 0 ..< worldSize {
                 var line:[SquareButton] = []
                 for col in 0 ..< worldSize {
-                    
                     let square: SquareButton = buttonSquare(row: row, col: col, frameWidth: self.myView.frame.width, worldSize: worldSize).squareButton
-                    
                     self.myView.addSubview(square)
                     self.squareButtons.append(square)
                     line.append(square)
@@ -57,12 +55,13 @@ class ViewController:  UIViewController, UIScrollViewDelegate {
                 let squareSize:CGFloat =  frameWidth / 20.0 //CGFloat(worldSize)
                 let squareButton = SquareButton(squareModel: square, squareSize: squareSize, squareMargin1: 1.0);
                 squareButton.setTitleColor(UIColor.darkGray, for: .normal)
-                squareButton.addTarget(self, action: #selector(ViewController.squareButtonPressed(_:)), for: .touchDown) //fix onTapGesture(gesture:)
+                squareButton.addTarget(self, action: #selector(ViewController.squareButtonPressed(_:)), for: .touchDown)
                 return squareButton
             }
         }
     }
     
+    // REMARK: add all gestures supported
     func setupGestureRecognizer() {
         let pinchGestureRecognizer = UIPinchGestureRecognizer.init(target: self, action: #selector(ViewController.handlePinchGesture(recognizer:)))
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(ViewController.draggedView(sender:)))
@@ -93,7 +92,7 @@ class ViewController:  UIViewController, UIScrollViewDelegate {
             case .RUNNING:
                 controlButton.setOn(false, animated: false)
                 // we just pause
-                self.gameLogic?.gameStatus = .PAUSED
+                self.gameLogic?.changeStatus(status: .PAUSED)
             case .STABLE:
                 changeButton(button: sender)
                 controlButton.setOn(false, animated: false)
@@ -158,19 +157,19 @@ class ViewController:  UIViewController, UIScrollViewDelegate {
                 if let status = game.gameStatus {
                     switch status {
                     case .RUNNING:
-                        self.gameLogic?.gameStatus = .PAUSED
+                        self.gameLogic?.changeStatus(status: .PAUSED)
                         break
                     case .STOPPED:
-                        self.gameLogic?.gameStatus = .RUNNING
+                        self.gameLogic?.changeStatus(status: .RUNNING)
                         runTimer()
                     case .OVER:
                         controlButton.setOn(false, animated: false)
                         self.timer?.invalidate()
                     case .STABLE:
-                        self.gameLogic?.gameStatus = .RUNNING
+                        self.gameLogic?.changeStatus(status: .RUNNING)
                         runTimer()
                     case .PAUSED:
-                        self.gameLogic?.gameStatus = .RUNNING
+                        self.gameLogic?.changeStatus(status: .RUNNING)
                         runTimer()
                     }
                 }
@@ -184,7 +183,7 @@ class ViewController:  UIViewController, UIScrollViewDelegate {
             }
         } else {
             // self.resetBoard()
-            self.gameLogic?.gameStatus = .RUNNING
+            self.gameLogic?.changeStatus(status: .RUNNING)
             runTimer()
         }
     }
@@ -193,7 +192,7 @@ class ViewController:  UIViewController, UIScrollViewDelegate {
             self.timer = Timer.scheduledTimer(
                 timeInterval: 0.8, target: self, selector: #selector(ViewController.advanceGeneration),
                 userInfo: nil, repeats: true)
-            self.gameLogic?.gameStatus = .RUNNING
+            self.gameLogic?.changeStatus(status: .RUNNING)
     }
     
     required init?(coder aDecoder: NSCoder)

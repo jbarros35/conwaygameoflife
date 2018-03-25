@@ -7,12 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		82A222172067BF790080F023 /* ConwayGameTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A2220F2067B6E30080F023 /* ConwayGameTest.swift */; };
 		82A788F22062F00E000CE57B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A788F12062F00E000CE57B /* AppDelegate.swift */; };
 		82A788F42062F00E000CE57B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A788F32062F00E000CE57B /* ViewController.swift */; };
 		82A788F72062F00E000CE57B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 82A788F52062F00E000CE57B /* Main.storyboard */; };
 		82A788F92062F00E000CE57B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 82A788F82062F00E000CE57B /* Assets.xcassets */; };
 		82A788FC2062F00E000CE57B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 82A788FA2062F00E000CE57B /* LaunchScreen.storyboard */; };
-		82A789072062F00E000CE57B /* ConwayPrjTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A789062062F00E000CE57B /* ConwayPrjTests.swift */; };
 		82A789122062F00E000CE57B /* ConwayPrjUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A789112062F00E000CE57B /* ConwayPrjUITests.swift */; };
 		82A7892920642855000CE57B /* Square.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A7892820642855000CE57B /* Square.swift */; };
 		82A7892D20642986000CE57B /* SquareButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A7892C20642986000CE57B /* SquareButton.swift */; };
@@ -20,6 +20,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		82A222122067B6E30080F023 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 82A788E62062F00E000CE57B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 82A788ED2062F00E000CE57B;
+			remoteInfo = ConwayPrj;
+		};
 		82A789032062F00E000CE57B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 82A788E62062F00E000CE57B /* Project object */;
@@ -37,6 +44,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		82A2220D2067B6E30080F023 /* ConwayGameTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ConwayGameTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		82A2220F2067B6E30080F023 /* ConwayGameTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConwayGameTest.swift; sourceTree = "<group>"; };
 		82A788EE2062F00E000CE57B /* ConwayPrj.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ConwayPrj.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		82A788F12062F00E000CE57B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		82A788F32062F00E000CE57B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -45,7 +54,6 @@
 		82A788FB2062F00E000CE57B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		82A788FD2062F00E000CE57B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		82A789022062F00E000CE57B /* ConwayPrjTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ConwayPrjTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		82A789062062F00E000CE57B /* ConwayPrjTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConwayPrjTests.swift; sourceTree = "<group>"; };
 		82A789082062F00E000CE57B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		82A7890D2062F00E000CE57B /* ConwayPrjUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ConwayPrjUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		82A789112062F00E000CE57B /* ConwayPrjUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConwayPrjUITests.swift; sourceTree = "<group>"; };
@@ -56,6 +64,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		82A2220A2067B6E30080F023 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		82A788EB2062F00E000CE57B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -96,6 +111,7 @@
 				82A788EE2062F00E000CE57B /* ConwayPrj.app */,
 				82A789022062F00E000CE57B /* ConwayPrjTests.xctest */,
 				82A7890D2062F00E000CE57B /* ConwayPrjUITests.xctest */,
+				82A2220D2067B6E30080F023 /* ConwayGameTest.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -117,7 +133,7 @@
 		82A789052062F00E000CE57B /* ConwayPrjTests */ = {
 			isa = PBXGroup;
 			children = (
-				82A789062062F00E000CE57B /* ConwayPrjTests.swift */,
+				82A2220F2067B6E30080F023 /* ConwayGameTest.swift */,
 				82A789082062F00E000CE57B /* Info.plist */,
 			);
 			path = ConwayPrjTests;
@@ -145,6 +161,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		82A2220C2067B6E30080F023 /* ConwayGameTest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 82A222162067B6E30080F023 /* Build configuration list for PBXNativeTarget "ConwayGameTest" */;
+			buildPhases = (
+				82A222092067B6E30080F023 /* Sources */,
+				82A2220A2067B6E30080F023 /* Frameworks */,
+				82A2220B2067B6E30080F023 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				82A222132067B6E30080F023 /* PBXTargetDependency */,
+			);
+			name = ConwayGameTest;
+			productName = ConwayGameTest;
+			productReference = 82A2220D2067B6E30080F023 /* ConwayGameTest.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		82A788ED2062F00E000CE57B /* ConwayPrj */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 82A789162062F00E000CE57B /* Build configuration list for PBXNativeTarget "ConwayPrj" */;
@@ -208,6 +242,11 @@
 				LastUpgradeCheck = 0920;
 				ORGANIZATIONNAME = Jose;
 				TargetAttributes = {
+					82A2220C2067B6E30080F023 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 82A788ED2062F00E000CE57B;
+					};
 					82A788ED2062F00E000CE57B = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
@@ -240,11 +279,19 @@
 				82A788ED2062F00E000CE57B /* ConwayPrj */,
 				82A789012062F00E000CE57B /* ConwayPrjTests */,
 				82A7890C2062F00E000CE57B /* ConwayPrjUITests */,
+				82A2220C2067B6E30080F023 /* ConwayGameTest */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		82A2220B2067B6E30080F023 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		82A788EC2062F00E000CE57B /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -272,6 +319,13 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		82A222092067B6E30080F023 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		82A788EA2062F00E000CE57B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -288,7 +342,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				82A789072062F00E000CE57B /* ConwayPrjTests.swift in Sources */,
+				82A222172067BF790080F023 /* ConwayGameTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -303,6 +357,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		82A222132067B6E30080F023 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 82A788ED2062F00E000CE57B /* ConwayPrj */;
+			targetProxy = 82A222122067B6E30080F023 /* PBXContainerItemProxy */;
+		};
 		82A789042062F00E000CE57B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 82A788ED2062F00E000CE57B /* ConwayPrj */;
@@ -335,6 +394,36 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		82A222142067B6E30080F023 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = ConwayGameTest/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = josebarros.ConwayGameTest;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ConwayPrj.app/ConwayPrj";
+			};
+			name = Debug;
+		};
+		82A222152067B6E30080F023 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = ConwayGameTest/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = josebarros.ConwayGameTest;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ConwayPrj.app/ConwayPrj";
+			};
+			name = Release;
+		};
 		82A789142062F00E000CE57B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -535,6 +624,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		82A222162067B6E30080F023 /* Build configuration list for PBXNativeTarget "ConwayGameTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				82A222142067B6E30080F023 /* Debug */,
+				82A222152067B6E30080F023 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		82A788E92062F00E000CE57B /* Build configuration list for PBXProject "ConwayPrj" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

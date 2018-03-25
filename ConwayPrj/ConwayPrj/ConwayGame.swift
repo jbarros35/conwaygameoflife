@@ -8,35 +8,53 @@
 
 import Foundation
 
-class ConwayGame {
+enum GameStatus {
+    case RUNNING
+    case STOPPED
+    case STABLE
+    case OVER
+    case PAUSED
+}
+
+protocol ConwayGamePtcl {
     
-    public var world: [[SquareButton]] = []
-    public var worldSize: Int = 0
-    public var generations: Int = 0
+    typealias T = GameStatus
     
-    private var nextGeneration: [(Int,Int)] = []
-    private var currentGeneration: [(Int,Int)] = []
-    private var generationsHistory: [String]
+    var gameStatus:GameStatus? {get}
+    var world: [[SquareButton]] {get set}
+    var generations: Int {get set}
+    var nextGeneration: [(Int,Int)] {get}
+    var currentGeneration: [(Int,Int)] {get}
+    var generationsHistory: [String] {get}
+    var worldSize: Int {get set}
     
-    public var gameStatus:GameStatus?
+    func changeStatus(status: T)
+    func runGeneration()
+    func toggleCell(line: Int, col: Int)
+    func appendCurrentGeneration(line:Int, col: Int)
+    func getCurrentSize() -> Int
+}
+
+class ConwayGame: ConwayGamePtcl {
+
+    var world: [[SquareButton]] = []
+    var worldSize: Int = 0
+    var generations: Int = 0
+    
+    internal var nextGeneration: [(Int,Int)] = []
+    internal var currentGeneration: [(Int,Int)] = []
+    internal var generationsHistory: [String]
+    var gameStatus: GameStatus?
     
     init() {
         generationsHistory = []
     }
     
-    enum GameStatus {
-        case RUNNING
-        case STOPPED
-        case STABLE
-        case OVER
-        case PAUSED
-    }
- 
-    
     var lastIndexAllowed:Int = 0
     
     // REMARK: run current generation and prepare next.
     func runGeneration() {
+        gameStatus = .RUNNING
         lastIndexAllowed = worldSize-1
         generations = generations + 1
         // print(generationsHistory)
@@ -55,7 +73,6 @@ class ConwayGame {
             return
         }
         
-        // print("world: \(world.count), next: \(nextGeneration.count), current: \(currentGeneration.count), gen: \(generations)")
         // erase born and life arrays
         nextGeneration.removeAll()
         // validate current
@@ -64,7 +81,6 @@ class ConwayGame {
             validateLife(line:creature.0, col:creature.1)
             // check my empty neighbours if they can get life
             for cell in getNeighboursIndexes(x:creature.0, y:creature.1) {
-            // for cell in getNeighboursIndexes(x:creature.col, y:creature.line) {
                 let line = cell.0
                 let col  = cell.1
                 if !world[line][col].square.live {
@@ -75,19 +91,21 @@ class ConwayGame {
         // clean all current positions after validated
         for creature in currentGeneration {
             world[creature.0][creature.1].change(false)
-            // world[creature.col][creature.line].change(false)
         }
         currentGeneration.removeAll()
         // only remains for the next
         for creature in nextGeneration {
             // display nextGeneration
             world[creature.0][creature.1].change(true)
-            // world[creature.line][creature.col].change(true)
         }
         
         // swap arrays for next generation
         currentGeneration = nextGeneration
         nextGeneration.removeAll()
+    }
+    
+    func changeStatus(status: GameStatus) {
+        gameStatus = status
     }
     
     // check who is alive
@@ -106,14 +124,14 @@ class ConwayGame {
             }
             
         } else {
-            // REMARK: needs to run.
+            // REMARK: it runs on empty cells
             if neighboursAlive == 3 {
                 // reproduction mark to born
                 appendNextGeneration(line:line,col:col)
             }
         }
     }
-    
+    // REMARK: when a button is pressed adds or removes from world
     func toggleCell(line: Int, col: Int) {
         let cell = world[line][col]
         if cell.square.live {
@@ -130,11 +148,11 @@ class ConwayGame {
     func appendCurrentGeneration(line:Int, col: Int) {
         let index = currentGeneration.index{$0 == line && $1 == col}
         if index == nil {
-            print("append to current: \(line, col)")
+            // print("append to current: \(line, col)")
             currentGeneration.append((line, col))
         }
     }
-    
+    // REMARK: get current size on current generation
     public func getCurrentSize() -> Int {
         return currentGeneration.count
     }
@@ -145,21 +163,11 @@ class ConwayGame {
         }
     }
 
-    
     func appendNextGeneration(line:Int, col: Int) {
         let index = nextGeneration.index{$0 == line && $1 == col}
         if index == nil {
             // print("append to next: \(line, col)")
             nextGeneration.append((line, col))
-        }
-    }
-    
-    func resetBoard() {
-        // assign mines to squares
-        for row in 0 ..< worldSize {
-            for col in 0 ..< worldSize {
-                world[row][col].square.live = false
-            }
         }
     }
     
@@ -177,7 +185,7 @@ class ConwayGame {
         return arr
     }
     
-    // REMARK: return all neighbours for x and y
+    // REMARK: return all neighbours cells for x and y
     func getNeighbours(x:Int, y:Int) -> Int {
         let arr = getNeighboursIndexes(x:x, y:y)
         var sum: Int = 0
