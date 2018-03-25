@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		82A222172067BF790080F023 /* ConwayGameTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A2220F2067B6E30080F023 /* ConwayGameTest.swift */; };
+		82A2222D2067CE690080F023 /* ViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A2222C2067CE690080F023 /* ViewControllerTest.swift */; };
+		82A222352067CEB90080F023 /* ViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A222342067CEB90080F023 /* ViewControllerTest.swift */; };
 		82A788F22062F00E000CE57B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A788F12062F00E000CE57B /* AppDelegate.swift */; };
 		82A788F42062F00E000CE57B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A788F32062F00E000CE57B /* ViewController.swift */; };
 		82A788F72062F00E000CE57B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 82A788F52062F00E000CE57B /* Main.storyboard */; };
@@ -21,6 +23,20 @@
 
 /* Begin PBXContainerItemProxy section */
 		82A222122067B6E30080F023 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 82A788E62062F00E000CE57B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 82A788ED2062F00E000CE57B;
+			remoteInfo = ConwayPrj;
+		};
+		82A222212067C71D0080F023 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 82A788E62062F00E000CE57B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 82A788ED2062F00E000CE57B;
+			remoteInfo = ConwayPrj;
+		};
+		82A2222F2067CE690080F023 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 82A788E62062F00E000CE57B /* Project object */;
 			proxyType = 1;
@@ -46,6 +62,11 @@
 /* Begin PBXFileReference section */
 		82A2220D2067B6E30080F023 /* ConwayGameTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ConwayGameTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		82A2220F2067B6E30080F023 /* ConwayGameTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConwayGameTest.swift; sourceTree = "<group>"; };
+		82A2221C2067C71D0080F023 /* ViewControllerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ViewControllerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		82A2222A2067CE690080F023 /* ViewControllerTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ViewControllerTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		82A2222C2067CE690080F023 /* ViewControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerTest.swift; sourceTree = "<group>"; };
+		82A2222E2067CE690080F023 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		82A222342067CEB90080F023 /* ViewControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerTest.swift; sourceTree = "<group>"; };
 		82A788EE2062F00E000CE57B /* ConwayPrj.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ConwayPrj.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		82A788F12062F00E000CE57B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		82A788F32062F00E000CE57B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -65,6 +86,20 @@
 
 /* Begin PBXFrameworksBuildPhase section */
 		82A2220A2067B6E30080F023 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		82A222192067C71D0080F023 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		82A222272067CE690080F023 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -95,12 +130,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		82A2222B2067CE690080F023 /* ViewControllerTest */ = {
+			isa = PBXGroup;
+			children = (
+				82A2222C2067CE690080F023 /* ViewControllerTest.swift */,
+				82A2222E2067CE690080F023 /* Info.plist */,
+			);
+			path = ViewControllerTest;
+			sourceTree = "<group>";
+		};
 		82A788E52062F00E000CE57B = {
 			isa = PBXGroup;
 			children = (
 				82A788F02062F00E000CE57B /* ConwayPrj */,
 				82A789052062F00E000CE57B /* ConwayPrjTests */,
 				82A789102062F00E000CE57B /* ConwayPrjUITests */,
+				82A2222B2067CE690080F023 /* ViewControllerTest */,
 				82A788EF2062F00E000CE57B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -112,6 +157,8 @@
 				82A789022062F00E000CE57B /* ConwayPrjTests.xctest */,
 				82A7890D2062F00E000CE57B /* ConwayPrjUITests.xctest */,
 				82A2220D2067B6E30080F023 /* ConwayGameTest.xctest */,
+				82A2221C2067C71D0080F023 /* ViewControllerUITests.xctest */,
+				82A2222A2067CE690080F023 /* ViewControllerTest.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -133,6 +180,7 @@
 		82A789052062F00E000CE57B /* ConwayPrjTests */ = {
 			isa = PBXGroup;
 			children = (
+				82A222342067CEB90080F023 /* ViewControllerTest.swift */,
 				82A2220F2067B6E30080F023 /* ConwayGameTest.swift */,
 				82A789082062F00E000CE57B /* Info.plist */,
 			);
@@ -177,6 +225,42 @@
 			name = ConwayGameTest;
 			productName = ConwayGameTest;
 			productReference = 82A2220D2067B6E30080F023 /* ConwayGameTest.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		82A2221B2067C71D0080F023 /* ViewControllerUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 82A222232067C71D0080F023 /* Build configuration list for PBXNativeTarget "ViewControllerUITests" */;
+			buildPhases = (
+				82A222182067C71D0080F023 /* Sources */,
+				82A222192067C71D0080F023 /* Frameworks */,
+				82A2221A2067C71D0080F023 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				82A222222067C71D0080F023 /* PBXTargetDependency */,
+			);
+			name = ViewControllerUITests;
+			productName = ViewControllerUITests;
+			productReference = 82A2221C2067C71D0080F023 /* ViewControllerUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		82A222292067CE690080F023 /* ViewControllerTest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 82A222312067CE690080F023 /* Build configuration list for PBXNativeTarget "ViewControllerTest" */;
+			buildPhases = (
+				82A222262067CE690080F023 /* Sources */,
+				82A222272067CE690080F023 /* Frameworks */,
+				82A222282067CE690080F023 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				82A222302067CE690080F023 /* PBXTargetDependency */,
+			);
+			name = ViewControllerTest;
+			productName = ViewControllerTest;
+			productReference = 82A2222A2067CE690080F023 /* ViewControllerTest.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		82A788ED2062F00E000CE57B /* ConwayPrj */ = {
@@ -247,6 +331,16 @@
 						ProvisioningStyle = Automatic;
 						TestTargetID = 82A788ED2062F00E000CE57B;
 					};
+					82A2221B2067C71D0080F023 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 82A788ED2062F00E000CE57B;
+					};
+					82A222292067CE690080F023 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 82A788ED2062F00E000CE57B;
+					};
 					82A788ED2062F00E000CE57B = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
@@ -280,12 +374,28 @@
 				82A789012062F00E000CE57B /* ConwayPrjTests */,
 				82A7890C2062F00E000CE57B /* ConwayPrjUITests */,
 				82A2220C2067B6E30080F023 /* ConwayGameTest */,
+				82A2221B2067C71D0080F023 /* ViewControllerUITests */,
+				82A222292067CE690080F023 /* ViewControllerTest */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		82A2220B2067B6E30080F023 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		82A2221A2067C71D0080F023 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		82A222282067CE690080F023 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -326,6 +436,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		82A222182067C71D0080F023 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		82A222262067CE690080F023 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				82A2222D2067CE690080F023 /* ViewControllerTest.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		82A788EA2062F00E000CE57B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -342,6 +467,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				82A222352067CEB90080F023 /* ViewControllerTest.swift in Sources */,
 				82A222172067BF790080F023 /* ConwayGameTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -361,6 +487,16 @@
 			isa = PBXTargetDependency;
 			target = 82A788ED2062F00E000CE57B /* ConwayPrj */;
 			targetProxy = 82A222122067B6E30080F023 /* PBXContainerItemProxy */;
+		};
+		82A222222067C71D0080F023 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 82A788ED2062F00E000CE57B /* ConwayPrj */;
+			targetProxy = 82A222212067C71D0080F023 /* PBXContainerItemProxy */;
+		};
+		82A222302067CE690080F023 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 82A788ED2062F00E000CE57B /* ConwayPrj */;
+			targetProxy = 82A2222F2067CE690080F023 /* PBXContainerItemProxy */;
 		};
 		82A789042062F00E000CE57B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -417,6 +553,64 @@
 				INFOPLIST_FILE = ConwayGameTest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = josebarros.ConwayGameTest;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ConwayPrj.app/ConwayPrj";
+			};
+			name = Release;
+		};
+		82A222242067C71D0080F023 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = ViewControllerUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = josebarros.ViewControllerUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = ConwayPrj;
+			};
+			name = Debug;
+		};
+		82A222252067C71D0080F023 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = ViewControllerUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = josebarros.ViewControllerUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = ConwayPrj;
+			};
+			name = Release;
+		};
+		82A222322067CE690080F023 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = ViewControllerTest/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = josebarros.ViewControllerTest;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ConwayPrj.app/ConwayPrj";
+			};
+			name = Debug;
+		};
+		82A222332067CE690080F023 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = ViewControllerTest/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = josebarros.ViewControllerTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -629,6 +823,24 @@
 			buildConfigurations = (
 				82A222142067B6E30080F023 /* Debug */,
 				82A222152067B6E30080F023 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		82A222232067C71D0080F023 /* Build configuration list for PBXNativeTarget "ViewControllerUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				82A222242067C71D0080F023 /* Debug */,
+				82A222252067C71D0080F023 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		82A222312067CE690080F023 /* Build configuration list for PBXNativeTarget "ViewControllerTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				82A222322067CE690080F023 /* Debug */,
+				82A222332067CE690080F023 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
