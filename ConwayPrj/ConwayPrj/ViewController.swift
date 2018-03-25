@@ -8,11 +8,12 @@
 
 import UIKit
 
-class ViewController:  UIViewController, UIScrollViewDelegate {
+class ViewController:  UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
-    @IBOutlet weak var scrollView: UIScrollView!
+    // @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var movesLabel: UILabel!
-    @IBOutlet weak var myView: UIView!
+    // @IBOutlet weak var myView: UIView!
+    @IBOutlet weak var myView: UICollectionView!
     
     var gameLogic:ConwayGamePtcl?
     
@@ -20,25 +21,27 @@ class ViewController:  UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var controlButton: UISwitch!
     
     var timer:Timer?
-    
-    var squareButtons:[SquareButton] = []
 
     func initializeBoard() {
         gameLogic = ConwayGame()
         gameLogic?.worldSize = 100
         gameLogic?.changeStatus(status: .STOPPED)
         if var world = gameLogic?.world {
+            self.myView.allowsMultipleSelection = false
             let worldSize = gameLogic!.worldSize
+            var buttonCount = 0
             for row in 0 ..< worldSize {
-                var line:[SquareButton] = []
+                var line:[SquareCell] = []
                 for col in 0 ..< worldSize {
-                    let square: SquareButton = buttonSquare(row: row, col: col, frameWidth: self.myView.frame.width, worldSize: worldSize).squareButton
-                    self.myView.addSubview(square)
-                    self.squareButtons.append(square)
-                    line.append(square)
+                    let squareButton: SquareCell = buttonSquare(row: row, col: col, frameWidth: self.myView.frame.width, worldSize: worldSize).squareButton
+                    // squareButton.addTarget(self, action: #selector(ViewController.squareButtonPressed(_:)), for: .touchUpInside)
+                    squareButton.tag = buttonCount
+                    self.myView.addSubview(squareButton)
+                    line.append(squareButton)
+                    buttonCount = buttonCount + 1
                 }
                 // append line of squares to game
-                world.append(line)
+                // world.append(line)
             }
             gameLogic?.world = world
         }
@@ -49,35 +52,68 @@ class ViewController:  UIViewController, UIScrollViewDelegate {
         var col: Int
         var frameWidth: CGFloat
         var worldSize: Int
-        var squareButton: SquareButton {
+        var squareButton: SquareCell {
             get {
                 let square = Square(row: row, col: col)
-                let squareSize:CGFloat =  frameWidth / 20.0 //CGFloat(worldSize)
-                let squareButton = SquareButton(squareModel: square, squareSize: squareSize, squareMargin1: 1.0);
-                squareButton.setTitleColor(UIColor.darkGray, for: .normal)
-                squareButton.addTarget(self, action: #selector(ViewController.squareButtonPressed(_:)), for: .touchDown)
+                let squareSize:CGFloat =  frameWidth / 20 // CGFloat(worldSize)
+                let squareButton = SquareCell()
+                squareButton.square = square
+                squareButton.setVars(squareModel: square, squareSize: squareSize, squareMargin1: 1.0);
+                // squareButton.setTitleColor(UIColor.darkGray, for: .normal)
                 return squareButton
             }
         }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return self.gameLogic?.worldSize ?? 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        // get a reference to our storyboard cell
+        let cell = myView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath as IndexPath) as! SquareCell
+        
+        // Use the outlet in our custom class to get a reference to the UILabel in the cell
+        cell.backgroundColor = UIColor.white // make cell more visible in our example project
+        cell.squareMargin =  1.0
+        
+        cell.contentView.layer.cornerRadius = 2.0
+        cell.contentView.layer.borderWidth = 1.0
+        cell.contentView.layer.borderColor = UIColor.black.cgColor
+        
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("You selected cell #\(indexPath.item)!")
     }
     
     // REMARK: add all gestures supported
     func setupGestureRecognizer() {
         let pinchGestureRecognizer = UIPinchGestureRecognizer.init(target: self, action: #selector(ViewController.handlePinchGesture(recognizer:)))
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(ViewController.draggedView(sender:)))
+        panGesture.maximumNumberOfTouches = 2
         self.view.addGestureRecognizer(pinchGestureRecognizer)
         self.view.addGestureRecognizer(panGesture)
     }
-   
+
+    
+    // REMARK: controls pan view
     @objc func draggedView(sender:UIPanGestureRecognizer){
-        let translation = sender.translation(in: self.view)
-        myView.center = CGPoint(x: myView.center.x + translation.x, y: myView.center.y + translation.y)
-        sender.setTranslation(CGPoint.zero, in: self.view)
+        if ((sender.state != UIGestureRecognizerState.ended) &&
+            (sender.state != UIGestureRecognizerState.failed)) {
+            let translation = sender.translation(in: self.view)
+            myView.center = CGPoint(x: myView.center.x + translation.x, y: myView.center.y + translation.y)
+            sender.setTranslation(CGPoint.zero, in: self.view)
+            // sender.setTranslation(CGPoint(x: 0, y: 0), in: self.view)
+        }
     }
 
+    // REMARK: controls pinch gesture
     @objc func handlePinchGesture(recognizer: UIPinchGestureRecognizer) {
         myView.transform = (myView.transform).scaledBy(x: recognizer.scale, y: recognizer.scale)
         recognizer.scale = 1.0
+        myView.reloadData()
     }
     
     @objc func squareButtonPressed(_ sender: SquareButton) {
@@ -135,19 +171,13 @@ class ViewController:  UIViewController, UIScrollViewDelegate {
     }
     
     func changeButton(button: SquareButton) {
+        print("Button tag: \(button.tag)")
         if(button.square.live) {
             button.backgroundColor = .white
         } else {
             button.backgroundColor = .black
         }
         gameLogic?.toggleCell(line: button.square.row, col: button.square.col)
-    }
-
-    func resetBoard() {
-        // iterates through each button and resets the text to the default value
-        for squareButton in self.squareButtons {
-            squareButton.backgroundColor = .white
-        }
     }
 
     func startNewGame() {
@@ -204,6 +234,7 @@ class ViewController:  UIViewController, UIScrollViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        self.myView.delegate = self
         self.initializeBoard()
         setupGestureRecognizer()
     }
@@ -215,7 +246,7 @@ class ViewController:  UIViewController, UIScrollViewDelegate {
 
     func showMessage(title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
         alert.view.setNeedsLayout()
         self.present(alert, animated: true, completion: nil)
     }
