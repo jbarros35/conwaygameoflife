@@ -8,137 +8,88 @@
 
 import UIKit
 
-class ViewController:  UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
-    
-    // @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var movesLabel: UILabel!
-    // @IBOutlet weak var myView: UIView!
-    @IBOutlet weak var myView: UICollectionView!
+let reuseIdentifier = "customCell"
+
+class ViewController: UICollectionViewController {
     
     var gameLogic:ConwayGamePtcl?
-    
-    // start pause button
-    @IBOutlet weak var controlButton: UISwitch!
-    
+    let worldSize = 20
     var timer:Timer?
 
     func initializeBoard() {
         gameLogic = ConwayGame()
-        gameLogic?.worldSize = 100
+        gameLogic?.worldSize = worldSize
         gameLogic?.changeStatus(status: .STOPPED)
-        if var world = gameLogic?.world {
-            self.myView.allowsMultipleSelection = false
-            let worldSize = gameLogic!.worldSize
-            var buttonCount = 0
-            for row in 0 ..< worldSize {
-                var line:[SquareCell] = []
-                for col in 0 ..< worldSize {
-                    let squareButton: SquareCell = buttonSquare(row: row, col: col, frameWidth: self.myView.frame.width, worldSize: worldSize).squareButton
-                    // squareButton.addTarget(self, action: #selector(ViewController.squareButtonPressed(_:)), for: .touchUpInside)
-                    squareButton.tag = buttonCount
-                    self.myView.addSubview(squareButton)
-                    line.append(squareButton)
-                    buttonCount = buttonCount + 1
+        
+        if let collection = self.collectionView {
+            if var world = gameLogic?.world {
+                for row in 0 ..< worldSize {
+                    var line:[SquareCell] = []
+                    for col in 0 ..< worldSize {
+                        let index = IndexPath(row: row, section: col)
+                        if let cell = collection.cellForItem(at: index) {
+                            line.append(collection.cellForItem(at: index) as! SquareCell)
+                        }
+                    }
+                    // append line of squares to game
+                    world.append(line)
                 }
-                // append line of squares to game
-                // world.append(line)
+                gameLogic?.world = world
             }
-            gameLogic?.world = world
+        }
+        
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let cell = collectionView.cellForItem(at: indexPath) as? SquareCell {
+            print("You selected cell #\(indexPath.section) \(indexPath.row)!")
+            if let status = self.gameLogic?.gameStatus {
+                switch status {
+                case .PAUSED:
+                    // we change button state
+                    changeButton(cell: cell, indexPath: indexPath)
+                case .STOPPED:
+                    // we change button
+                    changeButton(cell: cell, indexPath: indexPath)
+                case .RUNNING:
+                    // controlButton.setOn(false, animated: false)
+                    // we just pause
+                    self.gameLogic?.changeStatus(status: .PAUSED)
+                case .STABLE:
+                    changeButton(cell: cell, indexPath: indexPath)
+                    // controlButton.setOn(false, animated: false)
+                    self.timer?.invalidate()
+                case .OVER:
+                    // controlButton.setOn(false, animated: false)
+                    showMessage(title: "Game is over!", message: "The game terminated, all creatures are dead.")
+                    self.timer?.invalidate()
+                }
+            }
         }
     }
     
-    struct buttonSquare {
-        var row: Int
-        var col: Int
-        var frameWidth: CGFloat
-        var worldSize: Int
-        var squareButton: SquareCell {
-            get {
-                let square = Square(row: row, col: col)
-                let squareSize:CGFloat =  frameWidth / 20 // CGFloat(worldSize)
-                let squareButton = SquareCell()
-                squareButton.square = square
-                squareButton.setVars(squareModel: square, squareSize: squareSize, squareMargin1: 1.0);
-                // squareButton.setTitleColor(UIColor.darkGray, for: .normal)
-                return squareButton
-            }
-        }
+    func changeButton(cell: SquareCell, indexPath: IndexPath) {
+        cell.backgroundColor = cell.backgroundColor == UIColor.black ? UIColor.white : UIColor.black
+        gameLogic?.toggleCell(line: indexPath.section, col: indexPath.row)
     }
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.gameLogic?.worldSize ?? 0
+    override func numberOfSections(in collectionView: UICollectionView) -> Int {
+        //#warning Incomplete method implementation -- Return the number of sections
+        return worldSize
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        // get a reference to our storyboard cell
-        let cell = myView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath as IndexPath) as! SquareCell
-        
-        // Use the outlet in our custom class to get a reference to the UILabel in the cell
-        cell.backgroundColor = UIColor.white // make cell more visible in our example project
-        cell.squareMargin =  1.0
-        
-        cell.contentView.layer.cornerRadius = 2.0
-        cell.contentView.layer.borderWidth = 1.0
-        cell.contentView.layer.borderColor = UIColor.black.cgColor
-        
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        //#warning Incomplete method implementation -- Return the number of items in the section
+        return worldSize
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! SquareCell
         return cell
     }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("You selected cell #\(indexPath.item)!")
-    }
-    
-    // REMARK: add all gestures supported
-    func setupGestureRecognizer() {
-        let pinchGestureRecognizer = UIPinchGestureRecognizer.init(target: self, action: #selector(ViewController.handlePinchGesture(recognizer:)))
-        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(ViewController.draggedView(sender:)))
-        panGesture.maximumNumberOfTouches = 2
-        self.view.addGestureRecognizer(pinchGestureRecognizer)
-        self.view.addGestureRecognizer(panGesture)
-    }
-
-    
-    // REMARK: controls pan view
-    @objc func draggedView(sender:UIPanGestureRecognizer){
-        if ((sender.state != UIGestureRecognizerState.ended) &&
-            (sender.state != UIGestureRecognizerState.failed)) {
-            let translation = sender.translation(in: self.view)
-            myView.center = CGPoint(x: myView.center.x + translation.x, y: myView.center.y + translation.y)
-            sender.setTranslation(CGPoint.zero, in: self.view)
-            // sender.setTranslation(CGPoint(x: 0, y: 0), in: self.view)
-        }
-    }
-
-    // REMARK: controls pinch gesture
-    @objc func handlePinchGesture(recognizer: UIPinchGestureRecognizer) {
-        myView.transform = (myView.transform).scaledBy(x: recognizer.scale, y: recognizer.scale)
-        recognizer.scale = 1.0
-        myView.reloadData()
-    }
-    
+   
     @objc func squareButtonPressed(_ sender: SquareButton) {
-        if let status = self.gameLogic?.gameStatus {
-            switch status {
-            case .PAUSED:
-                // we change button state
-                changeButton(button: sender)
-            case .STOPPED:
-                // we change button
-                changeButton(button: sender)
-            case .RUNNING:
-                controlButton.setOn(false, animated: false)
-                // we just pause
-                self.gameLogic?.changeStatus(status: .PAUSED)
-            case .STABLE:
-                changeButton(button: sender)
-                controlButton.setOn(false, animated: false)
-                self.timer?.invalidate()
-            case .OVER:
-                controlButton.setOn(false, animated: false)
-                showMessage(title: "Game is over!", message: "The game terminated, all creatures are dead.")
-                self.timer?.invalidate()
-            }
-        }
+        
     }
     
     // REMARK: run generation and update status in the view
@@ -148,12 +99,12 @@ class ViewController:  UIViewController, UICollectionViewDataSource, UICollectio
             case .RUNNING:
                 self.gameLogic?.runGeneration()
             case .OVER:
-                controlButton.setOn(false, animated: false)
+                // controlButton.setOn(false, animated: false)
                 showMessage(title: "Game is over!", message: "The game terminated, all creatures are dead.")
                 self.timer?.invalidate()
             case .STABLE:
                 showMessage(title: "Game is stopped!", message: "The game isn't evolving anymore and you must put new creatures in the world.")
-                controlButton.setOn(false, animated: false)
+                // controlButton.setOn(false, animated: false)
                 self.timer?.invalidate()
             case .STOPPED:
                 self.timer?.invalidate()
@@ -161,23 +112,13 @@ class ViewController:  UIViewController, UICollectionViewDataSource, UICollectio
                 self.timer?.invalidate()
             }
             if let generationsCount = gameLogic?.generations {
-                movesLabel.text = "\(String(describing: generationsCount))"
+                // movesLabel.text = "\(String(describing: generationsCount))"
             }
         }
     }
     
     @IBAction func newGamePressed() {
         self.startNewGame()
-    }
-    
-    func changeButton(button: SquareButton) {
-        print("Button tag: \(button.tag)")
-        if(button.square.live) {
-            button.backgroundColor = .white
-        } else {
-            button.backgroundColor = .black
-        }
-        gameLogic?.toggleCell(line: button.square.row, col: button.square.col)
     }
 
     func startNewGame() {
@@ -193,7 +134,7 @@ class ViewController:  UIViewController, UICollectionViewDataSource, UICollectio
                         self.gameLogic?.changeStatus(status: .RUNNING)
                         runTimer()
                     case .OVER:
-                        controlButton.setOn(false, animated: false)
+                        // controlButton.setOn(false, animated: false)
                         self.timer?.invalidate()
                     case .STABLE:
                         self.gameLogic?.changeStatus(status: .RUNNING)
@@ -207,7 +148,7 @@ class ViewController:  UIViewController, UICollectionViewDataSource, UICollectio
                 if self.gameLogic?.gameStatus != .OVER {
                     showMessage(title: "Game isn't valid!", message: "Select some cells to start the game.")
                 } else {
-                    controlButton.setOn(false, animated: false)
+                    // controlButton.setOn(false, animated: false)
                     showMessage(title: "Empty World!", message: "Game is over, please restart")
                 }
             }
@@ -227,18 +168,22 @@ class ViewController:  UIViewController, UICollectionViewDataSource, UICollectio
     
     required init?(coder aDecoder: NSCoder)
     {
-        // self.board = Board(size: BOARD_SIZE)
         super.init(coder: aDecoder)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        self.myView.delegate = self
-        self.initializeBoard()
-        setupGestureRecognizer()
     }
-   
+    
+    override func viewDidAppear(_ animated: Bool) {
+        print("view did appear")
+        if !(self.collectionView?.visibleCells.isEmpty)! {
+            //
+            print("init board")
+            self.initializeBoard()
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

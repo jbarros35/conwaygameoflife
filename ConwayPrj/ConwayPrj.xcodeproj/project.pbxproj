@@ -10,6 +10,7 @@
 		82A222172067BF790080F023 /* ConwayGameTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A2220F2067B6E30080F023 /* ConwayGameTest.swift */; };
 		82A222352067CEB90080F023 /* ViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A222342067CEB90080F023 /* ViewControllerTest.swift */; };
 		82A2223720680AD60080F023 /* SquareCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A2223620680AD60080F023 /* SquareCell.swift */; };
+		82A2223920682B390080F023 /* CollectionLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A2223820682B390080F023 /* CollectionLayout.swift */; };
 		82A788F22062F00E000CE57B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A788F12062F00E000CE57B /* AppDelegate.swift */; };
 		82A788F42062F00E000CE57B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A788F32062F00E000CE57B /* ViewController.swift */; };
 		82A788F72062F00E000CE57B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 82A788F52062F00E000CE57B /* Main.storyboard */; };
@@ -66,6 +67,7 @@
 		82A2222A2067CE690080F023 /* ViewControllerTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ViewControllerTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		82A222342067CEB90080F023 /* ViewControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerTest.swift; sourceTree = "<group>"; };
 		82A2223620680AD60080F023 /* SquareCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquareCell.swift; sourceTree = "<group>"; };
+		82A2223820682B390080F023 /* CollectionLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionLayout.swift; sourceTree = "<group>"; };
 		82A788EE2062F00E000CE57B /* ConwayPrj.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ConwayPrj.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		82A788F12062F00E000CE57B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		82A788F32062F00E000CE57B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -129,6 +131,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		82A2223A2069612E0080F023 /* Layout */ = {
+			isa = PBXGroup;
+			children = (
+				82A2223820682B390080F023 /* CollectionLayout.swift */,
+				82A7892C20642986000CE57B /* SquareButton.swift */,
+				82A2223620680AD60080F023 /* SquareCell.swift */,
+				82A7892820642855000CE57B /* Square.swift */,
+			);
+			path = Layout;
+			sourceTree = "<group>";
+		};
 		82A788E52062F00E000CE57B = {
 			isa = PBXGroup;
 			children = (
@@ -155,14 +168,12 @@
 		82A788F02062F00E000CE57B /* ConwayPrj */ = {
 			isa = PBXGroup;
 			children = (
+				82A2223A2069612E0080F023 /* Layout */,
 				82A7891F2062F023000CE57B /* Support */,
 				82A788F32062F00E000CE57B /* ViewController.swift */,
-				82A7892C20642986000CE57B /* SquareButton.swift */,
 				82A788F52062F00E000CE57B /* Main.storyboard */,
-				82A7892820642855000CE57B /* Square.swift */,
 				82A788FD2062F00E000CE57B /* Info.plist */,
 				82A7892E206436BF000CE57B /* ConwayGame.swift */,
-				82A2223620680AD60080F023 /* SquareCell.swift */,
 			);
 			path = ConwayPrj;
 			sourceTree = "<group>";
@@ -448,6 +459,7 @@
 				82A7892920642855000CE57B /* Square.swift in Sources */,
 				82A788F42062F00E000CE57B /* ViewController.swift in Sources */,
 				82A7892D20642986000CE57B /* SquareButton.swift in Sources */,
+				82A2223920682B390080F023 /* CollectionLayout.swift in Sources */,
 				82A7892F206436BF000CE57B /* ConwayGame.swift in Sources */,
 				82A788F22062F00E000CE57B /* AppDelegate.swift in Sources */,
 			);
