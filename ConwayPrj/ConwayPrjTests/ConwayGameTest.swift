@@ -25,7 +25,7 @@ class ConwayGameTest: XCTestCase {
             var line:[SquareButton] = []
             for col in 0 ..< worldSize {
                 
-                let square: SquareButton = ViewController.buttonSquare(row: row, col: col, frameWidth: framewidth, worldSize: worldSize).squareButton
+                let square: SquareButton = FreePlayViewController.buttonSquare(row: row, col: col, frameWidth: framewidth, worldSize: worldSize).squareButton
                 
                 // self.myView.addSubview(square)
                 // self.squareButtons.append(square)
