@@ -12,13 +12,13 @@ import XCTest
 
 class ViewControllerTest: XCTestCase {
     
-    var controller: ViewController!
+    var controller: FreePlayViewController!
     
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
         controller = UIStoryboard(name: "Main",
-                                           bundle: nil).instantiateInitialViewController() as! ViewController!
+                                           bundle: nil).instantiateInitialViewController() as! FreePlayViewController!
         _ = controller.view
 
     }
@@ -30,7 +30,7 @@ class ViewControllerTest: XCTestCase {
     }
     
     func squareButton(row: Int, col: Int) -> SquareButton {
-        let square: SquareButton = ViewController.buttonSquare(row: row, col: col, frameWidth: 1, worldSize: 1).squareButton
+        let square: SquareButton = FreePlayViewController.buttonSquare(row: row, col: col, frameWidth: 1, worldSize: 1).squareButton
         return square
     }
     

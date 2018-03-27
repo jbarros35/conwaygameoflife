@@ -3,8 +3,8 @@ import UIKit
 @IBDesignable
 class SquareCell: UICollectionViewCell {
     
-    public var row:Int = 0
-    public var col:Int = 0
+    public var row:Int?
+    public var col:Int?
     public var live:Bool = false
     
     required init?(coder aDecoder: NSCoder) {
@@ -23,7 +23,7 @@ class SquareCell: UICollectionViewCell {
     }
     
     func change(_ state:Bool) {
-        self.backgroundColor = state ? .black : .white
+        self.backgroundColor = self.backgroundColor == UIColor.black ? UIColor.white : UIColor.black
         self.live = state
     }
 }

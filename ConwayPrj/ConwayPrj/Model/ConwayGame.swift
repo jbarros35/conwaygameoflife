@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 enum GameStatus {
     case RUNNING
@@ -21,7 +22,7 @@ protocol ConwayGamePtcl {
     typealias T = GameStatus
     
     var gameStatus:GameStatus? {get}
-    var world: [[SquareCell]] {get set}
+    // var world: [[SquareCell]]
     var generations: Int {get set}
     var nextGeneration: [(Int,Int)] {get}
     var currentGeneration: [(Int,Int)] {get}
@@ -33,6 +34,8 @@ protocol ConwayGamePtcl {
     func toggleCell(line: Int, col: Int)
     func appendCurrentGeneration(line:Int, col: Int)
     func getCurrentSize() -> Int
+    func appendCell(cell: SquareCell)
+    
 }
 
 class ConwayGame: ConwayGamePtcl {
@@ -46,8 +49,19 @@ class ConwayGame: ConwayGamePtcl {
     internal var generationsHistory: [String]
     var gameStatus: GameStatus?
     
-    init() {
+    init(worldSize: Int) {
+        print("init game world \(worldSize)")
         generationsHistory = []
+        self.worldSize = worldSize
+        // initialize world array
+        for _ in 0..<worldSize {
+            var line: [SquareCell] = []
+            for _ in 0..<worldSize {
+                line.append(SquareCell.init(frame: CGRect()))
+            }
+            line.reserveCapacity(worldSize)
+            world.append(line)
+        }
     }
     
     var lastIndexAllowed:Int = 0
@@ -142,6 +156,19 @@ class ConwayGame: ConwayGamePtcl {
             // new to current
             cell.change(true)
             appendCurrentGeneration(line: line, col: col)
+        }
+    }
+    
+    func appendCell(cell: SquareCell) {
+        if let row = cell.row {
+            if let col = cell.col {
+                if world[row][col] != cell {
+                    // print("new cell \(row, cell.col)")
+                    world[row][col] = cell
+                } else {
+                    print("we already put \(row, cell.col)")
+                }
+            }
         }
     }
     

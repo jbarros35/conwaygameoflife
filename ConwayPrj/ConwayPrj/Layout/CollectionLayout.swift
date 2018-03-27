@@ -1,6 +1,6 @@
 import UIKit
 
-class CustomCollectionViewLayout: UICollectionViewLayout {
+class CollectionViewLayout: UICollectionViewLayout {
     
     // Used for calculating each cells CGRect on screen.
     // CGRect will define the Origin and Size of the cell.

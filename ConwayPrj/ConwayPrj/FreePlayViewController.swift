@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  FreePlayViewController
 //  ConwayPrj
 //
 //  Created by Jose on 21/03/2018.
@@ -10,35 +10,11 @@ import UIKit
 
 let reuseIdentifier = "customCell"
 
-class ViewController: UICollectionViewController {
+class FreePlayViewController: UICollectionViewController {
     
     var gameLogic:ConwayGamePtcl?
-    let worldSize = 20
+    let worldSize = 30
     var timer:Timer?
-
-    func initializeBoard() {
-        gameLogic = ConwayGame()
-        gameLogic?.worldSize = worldSize
-        gameLogic?.changeStatus(status: .STOPPED)
-        
-        if let collection = self.collectionView {
-            if var world = gameLogic?.world {
-                for row in 0 ..< worldSize {
-                    var line:[SquareCell] = []
-                    for col in 0 ..< worldSize {
-                        let index = IndexPath(row: row, section: col)
-                        if let cell = collection.cellForItem(at: index) {
-                            line.append(collection.cellForItem(at: index) as! SquareCell)
-                        }
-                    }
-                    // append line of squares to game
-                    world.append(line)
-                }
-                gameLogic?.world = world
-            }
-        }
-        
-    }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let cell = collectionView.cellForItem(at: indexPath) as? SquareCell {
@@ -69,29 +45,28 @@ class ViewController: UICollectionViewController {
     }
     
     func changeButton(cell: SquareCell, indexPath: IndexPath) {
-        cell.backgroundColor = cell.backgroundColor == UIColor.black ? UIColor.white : UIColor.black
         gameLogic?.toggleCell(line: indexPath.section, col: indexPath.row)
     }
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        //#warning Incomplete method implementation -- Return the number of sections
         return worldSize
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        //#warning Incomplete method implementation -- Return the number of items in the section
         return worldSize
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! SquareCell
+        if cell.row == nil && cell.col == nil {
+            print("unset cell=\(cell.row, cell.col)")
+            cell.row = indexPath.section
+            cell.col = indexPath.row
+            self.gameLogic?.appendCell(cell: cell)
+        }
         return cell
     }
-   
-    @objc func squareButtonPressed(_ sender: SquareButton) {
-        
-    }
-    
+ 
     // REMARK: run generation and update status in the view
     @objc func advanceGeneration() {
         if let status = self.gameLogic?.gameStatus {
@@ -111,14 +86,7 @@ class ViewController: UICollectionViewController {
             case .PAUSED:
                 self.timer?.invalidate()
             }
-            if let generationsCount = gameLogic?.generations {
-                // movesLabel.text = "\(String(describing: generationsCount))"
-            }
         }
-    }
-    
-    @IBAction func newGamePressed() {
-        self.startNewGame()
     }
 
     func startNewGame() {
@@ -161,7 +129,7 @@ class ViewController: UICollectionViewController {
     // REMARK: runs new generation while is RUNNING
     func runTimer() {
             self.timer = Timer.scheduledTimer(
-                timeInterval: 0.8, target: self, selector: #selector(ViewController.advanceGeneration),
+                timeInterval: 0.8, target: self, selector: #selector(FreePlayViewController.advanceGeneration),
                 userInfo: nil, repeats: true)
             self.gameLogic?.changeStatus(status: .RUNNING)
     }
@@ -173,15 +141,25 @@ class ViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        gameLogic = ConwayGame(worldSize: worldSize)
+        gameLogic?.changeStatus(status: .STOPPED)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         print("view did appear")
         if !(self.collectionView?.visibleCells.isEmpty)! {
-            //
             print("init board")
-            self.initializeBoard()
+            
+            let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(longPressed(sender:)))
+            self.view.addGestureRecognizer(longPressRecognizer)
         }
+    }
+
+    
+    @objc func longPressed(sender: UILongPressGestureRecognizer)
+    {
+        print("longpressed")
+        showStartMessage(title: "Start Game", message: "Are you ready for begin?")
     }
     
     override func didReceiveMemoryWarning() {
@@ -192,6 +170,21 @@ class ViewController: UICollectionViewController {
     func showMessage(title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+        alert.view.setNeedsLayout()
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func showStartMessage(title: String, message: String) {
+        // create the alert
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+        
+        // add the actions (buttons)
+        alert.addAction(UIAlertAction(title: "Start", style: UIAlertActionStyle.default, handler: { action in
+            self.startNewGame()
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil))
+        
+        // show the alert
         alert.view.setNeedsLayout()
         self.present(alert, animated: true, completion: nil)
     }
