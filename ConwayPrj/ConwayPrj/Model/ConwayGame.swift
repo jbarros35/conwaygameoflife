@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 enum GameStatus {
     case RUNNING
@@ -21,7 +22,7 @@ protocol ConwayGamePtcl {
     typealias T = GameStatus
     
     var gameStatus:GameStatus? {get}
-    var world: [[SquareButton]] {get set}
+    // var world: [[SquareCell]]
     var generations: Int {get set}
     var nextGeneration: [(Int,Int)] {get}
     var currentGeneration: [(Int,Int)] {get}
@@ -33,11 +34,13 @@ protocol ConwayGamePtcl {
     func toggleCell(line: Int, col: Int)
     func appendCurrentGeneration(line:Int, col: Int)
     func getCurrentSize() -> Int
+    func appendCell(cell: SquareCell)
+    
 }
 
 class ConwayGame: ConwayGamePtcl {
 
-    var world: [[SquareButton]] = []
+    var world: [[SquareCell]] = []
     var worldSize: Int = 0
     var generations: Int = 0
     
@@ -46,8 +49,19 @@ class ConwayGame: ConwayGamePtcl {
     internal var generationsHistory: [String]
     var gameStatus: GameStatus?
     
-    init() {
+    init(worldSize: Int) {
+        print("init game world \(worldSize)")
         generationsHistory = []
+        self.worldSize = worldSize
+        // initialize world array
+        for _ in 0..<worldSize {
+            var line: [SquareCell] = []
+            for _ in 0..<worldSize {
+                line.append(SquareCell.init(frame: CGRect()))
+            }
+            line.reserveCapacity(worldSize)
+            world.append(line)
+        }
     }
     
     var lastIndexAllowed:Int = 0
@@ -83,7 +97,7 @@ class ConwayGame: ConwayGamePtcl {
             for cell in getNeighboursIndexes(x:creature.0, y:creature.1) {
                 let line = cell.0
                 let col  = cell.1
-                if !world[line][col].square.live {
+                if !world[line][col].live {
                     validateLife(line:line, col:col)
                 }
             }
@@ -114,7 +128,7 @@ class ConwayGame: ConwayGamePtcl {
         // 2. two or more alive neighbours alive lives for the next generation
         // 3. more than 3 neighbours dies
         // 4. if exactly 3 alive and its empty turns alive.
-        let alive: Bool = world[line][col].square.live
+        let alive: Bool = world[line][col].live
         let neighboursAlive: Int = getNeighbours(x:line, y:col)
         // print("validation \(line, col), alive: \(alive), neighbours active: \(neighboursAlive)")
         if alive {
@@ -134,7 +148,7 @@ class ConwayGame: ConwayGamePtcl {
     // REMARK: when a button is pressed adds or removes from world
     func toggleCell(line: Int, col: Int) {
         let cell = world[line][col]
-        if cell.square.live {
+        if cell.live {
             // exists
             cell.change(false)
             removeCurrentGeneration(line: line, col: col)
@@ -142,6 +156,19 @@ class ConwayGame: ConwayGamePtcl {
             // new to current
             cell.change(true)
             appendCurrentGeneration(line: line, col: col)
+        }
+    }
+    
+    func appendCell(cell: SquareCell) {
+        if let row = cell.row {
+            if let col = cell.col {
+                if world[row][col] != cell {
+                    // print("new cell \(row, cell.col)")
+                    world[row][col] = cell
+                } else {
+                    print("we already put \(row, cell.col)")
+                }
+            }
         }
     }
     
@@ -192,7 +219,7 @@ class ConwayGame: ConwayGamePtcl {
         for cell in arr {
             let line = cell.0
             let col  = cell.1
-            sum = sum + (world[line][col].square.live ? 1 : 0)
+            sum = sum + (world[line][col].live ? 1 : 0)
         }
         return sum
     }
