@@ -143,8 +143,15 @@ class FreePlayViewController: UICollectionViewController {
 
     func updateGrid() {
         if let currentGeneration = self.gameLogic?.currentGeneration {
+            // clean previous history
+            for oldCell in (self.gameLogic?.staleGeneration)! {
+                if let cell = self.collectionView?.cellForItem(at: IndexPath(row: oldCell.0, section: oldCell.1)) as? SquareCell {
+                    // erase it!
+                    cell.change(false)
+                }
+            }
             for cellW in currentGeneration {
-                print("update: \(currentGeneration)")
+                // print("update: \(currentGeneration)")
                 if let cell = self.collectionView?.cellForItem(at: IndexPath(row: cellW.0, section: cellW.1)) as? SquareCell {
                     print(cell.live)
                     if let state = self.gameLogic?.getCellAt(row: cellW.0, col: cellW.1) {

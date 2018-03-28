@@ -24,6 +24,7 @@ protocol ConwayGamePtcl {
     var generations: Int {get set}
     var nextGeneration: [(Int,Int)] {get}
     var currentGeneration: [(Int,Int)] {get}
+    var staleGeneration: [(Int,Int)] {get} // fix erasing.
     var generationsHistory: [String] {get}
     var worldSize: Int {get set}
     
@@ -41,23 +42,20 @@ class ConwayGame: ConwayGamePtcl {
     var world: [[Bool]] = []
     var worldSize: Int = 0
     var generations: Int = 0
-    
+    var staleGeneration: [(Int,Int)] = []
     internal var nextGeneration: [(Int,Int)] = []
     internal var currentGeneration: [(Int,Int)] = []
     internal var generationsHistory: [String]
     var gameStatus: GameStatus?
     
     init(worldSize: Int) {
-        print("init game world \(worldSize)")
+        // print("init game world \(worldSize)")
         generationsHistory = []
         self.worldSize = worldSize
         // initialize world array
         for _ in 0..<worldSize {
             var line: [Bool] = []
             for _ in 0..<worldSize {
-                /*let square = SquareCell.init(frame: CGRect())
-                square.row = row
-                square.col = col*/
                 line.append(false)
             }
             world.append(line)
@@ -71,7 +69,6 @@ class ConwayGame: ConwayGamePtcl {
         gameStatus = .RUNNING
         lastIndexAllowed = worldSize-1
         generations = generations + 1
-        // print(generationsHistory)
         if currentGeneration.isEmpty {
             gameStatus = .OVER
             return
@@ -82,6 +79,7 @@ class ConwayGame: ConwayGamePtcl {
                 generationsHistory.removeFirst()
             }
             generationsHistory.append("\(currentGeneration)")
+            staleGeneration = currentGeneration
         } else {
             gameStatus = .STABLE
             return
