@@ -10,12 +10,61 @@ import UIKit
 
 let reuseIdentifier = "customCell"
 
+extension FreePlayViewController : UICollectionViewDataSourcePrefetching {
+    func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
+        for indexPath in indexPaths{
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "customCell", for: indexPath) as! SquareCell
+            if let cellState = self.gameLogic?.getCellAt(row: indexPath.section, col: indexPath.row) {
+                cell.live = cellState
+            }
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cancelPrefetchingForItemsAt indexPaths: [IndexPath]) {
+        for indexPath in indexPaths{
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "customCell", for: indexPath) as! SquareCell
+            if let cellState = self.gameLogic?.getCellAt(row: indexPath.section, col: indexPath.row) {
+                cell.live = cellState
+            }
+        }
+    }
+}
+
+
 class FreePlayViewController: UICollectionViewController {
     
     var gameLogic:ConwayGamePtcl?
     let worldSize = 30
     var timer:Timer?
     
+    required init?(coder aDecoder: NSCoder)
+    {
+        super.init(coder: aDecoder)
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.collectionView?.isPrefetchingEnabled = false
+        self.collectionView?.dataSource = self
+        self.collectionView?.delegate = self
+        self.collectionView?.prefetchDataSource = self
+
+        gameLogic = ConwayGame(worldSize: worldSize)
+        gameLogic?.changeStatus(status: .STOPPED)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        print("view did appear")
+        if !(self.collectionView?.visibleCells.isEmpty)! {
+            let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(longPressed(sender:)))
+            longPressRecognizer.minimumPressDuration = 3
+            self.view.addGestureRecognizer(longPressRecognizer)
+            let pinchRecognizer = UIPinchGestureRecognizer(target: self, action: #selector(pinchHandler(gesture:)))
+            self.view.addGestureRecognizer(pinchRecognizer)
+        }
+    }
+    
+    // REMARK: click on cell and change it state
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let cell = collectionView.cellForItem(at: indexPath) as? SquareCell {
             print("You selected cell #\(indexPath.section) \(indexPath.row)!")
@@ -45,7 +94,10 @@ class FreePlayViewController: UICollectionViewController {
     }
     
     func changeButton(cell: SquareCell, indexPath: IndexPath) {
-        gameLogic?.toggleCell(line: indexPath.section, col: indexPath.row)
+        if let cellState = gameLogic?.getCellAt(row: indexPath.section, col: indexPath.row) {
+            cell.change(!cellState)
+            gameLogic?.toggleCell(line: indexPath.section, col: indexPath.row)
+        }
     }
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -55,14 +107,11 @@ class FreePlayViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return worldSize
     }
-    
+    // REMARK: load cells into collectionView
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! SquareCell
-        if cell.row == nil && cell.col == nil {
-            print("unset cell=\(cell.row, cell.col)")
-            cell.row = indexPath.section
-            cell.col = indexPath.row
-            self.gameLogic?.appendCell(cell: cell)
+        if let cellState = self.gameLogic?.getCellAt(row: indexPath.section, col: indexPath.row) {
+            cell.live = cellState
         }
         return cell
     }
@@ -73,11 +122,13 @@ class FreePlayViewController: UICollectionViewController {
             switch status {
             case .RUNNING:
                 self.gameLogic?.runGeneration()
+                updateGrid()
             case .OVER:
-                // controlButton.setOn(false, animated: false)
+                updateGrid()
                 showMessage(title: "Game is over!", message: "The game terminated, all creatures are dead.")
                 self.timer?.invalidate()
             case .STABLE:
+                updateGrid()
                 showMessage(title: "Game is stopped!", message: "The game isn't evolving anymore and you must put new creatures in the world.")
                 // controlButton.setOn(false, animated: false)
                 self.timer?.invalidate()
@@ -86,9 +137,24 @@ class FreePlayViewController: UICollectionViewController {
             case .PAUSED:
                 self.timer?.invalidate()
             }
+            
         }
     }
 
+    func updateGrid() {
+        if let currentGeneration = self.gameLogic?.currentGeneration {
+            for cellW in currentGeneration {
+                print("update: \(currentGeneration)")
+                if let cell = self.collectionView?.cellForItem(at: IndexPath(row: cellW.0, section: cellW.1)) as? SquareCell {
+                    print(cell.live)
+                    if let state = self.gameLogic?.getCellAt(row: cellW.0, col: cellW.1) {
+                        cell.change(state)
+                    }
+                }
+            }
+        }
+    }
+    
     func startNewGame() {
         //start new game
         if let game = self.gameLogic {
@@ -133,28 +199,29 @@ class FreePlayViewController: UICollectionViewController {
                 userInfo: nil, repeats: true)
             self.gameLogic?.changeStatus(status: .RUNNING)
     }
-    
-    required init?(coder aDecoder: NSCoder)
-    {
-        super.init(coder: aDecoder)
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        gameLogic = ConwayGame(worldSize: worldSize)
-        gameLogic?.changeStatus(status: .STOPPED)
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        print("view did appear")
-        if !(self.collectionView?.visibleCells.isEmpty)! {
-            print("init board")
-            
-            let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(longPressed(sender:)))
-            self.view.addGestureRecognizer(longPressRecognizer)
+
+    @objc private func pinchHandler(gesture: UIPinchGestureRecognizer) {
+        if let view = gesture.view {
+            switch gesture.state {
+            case .changed:
+                let pinchCenter = CGPoint(x: gesture.location(in: view).x - view.bounds.midX,
+                                          y: gesture.location(in: view).y - view.bounds.midY)
+                let transform = view.transform.translatedBy(x: pinchCenter.x, y: pinchCenter.y)
+                    .scaledBy(x: gesture.scale, y: gesture.scale)
+                    .translatedBy(x: -pinchCenter.x, y: -pinchCenter.y)
+                view.transform = transform
+                gesture.scale = 1
+            case .ended:
+                // Nice animation to scale down when releasing the pinch.
+                // OPTIONAL
+                UIView.animate(withDuration: 0.2, animations: {
+                    view.transform = CGAffineTransform.identity
+                })
+            default:
+                return
+            }
         }
     }
-
     
     @objc func longPressed(sender: UILongPressGestureRecognizer)
     {

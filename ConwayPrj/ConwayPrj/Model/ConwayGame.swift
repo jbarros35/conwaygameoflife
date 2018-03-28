@@ -22,7 +22,6 @@ protocol ConwayGamePtcl {
     typealias T = GameStatus
     
     var gameStatus:GameStatus? {get}
-    // var world: [[SquareCell]]
     var generations: Int {get set}
     var nextGeneration: [(Int,Int)] {get}
     var currentGeneration: [(Int,Int)] {get}
@@ -34,13 +33,13 @@ protocol ConwayGamePtcl {
     func toggleCell(line: Int, col: Int)
     func appendCurrentGeneration(line:Int, col: Int)
     func getCurrentSize() -> Int
-    func appendCell(cell: SquareCell)
+    func getCellAt(row: Int, col: Int) -> Bool
     
 }
 
 class ConwayGame: ConwayGamePtcl {
 
-    var world: [[SquareCell]] = []
+    var world: [[Bool]] = []
     var worldSize: Int = 0
     var generations: Int = 0
     
@@ -55,11 +54,13 @@ class ConwayGame: ConwayGamePtcl {
         self.worldSize = worldSize
         // initialize world array
         for _ in 0..<worldSize {
-            var line: [SquareCell] = []
+            var line: [Bool] = []
             for _ in 0..<worldSize {
-                line.append(SquareCell.init(frame: CGRect()))
+                /*let square = SquareCell.init(frame: CGRect())
+                square.row = row
+                square.col = col*/
+                line.append(false)
             }
-            line.reserveCapacity(worldSize)
             world.append(line)
         }
     }
@@ -97,20 +98,20 @@ class ConwayGame: ConwayGamePtcl {
             for cell in getNeighboursIndexes(x:creature.0, y:creature.1) {
                 let line = cell.0
                 let col  = cell.1
-                if !world[line][col].live {
+                if !world[line][col] {
                     validateLife(line:line, col:col)
                 }
             }
         }
         // clean all current positions after validated
         for creature in currentGeneration {
-            world[creature.0][creature.1].change(false)
+            world[creature.0][creature.1] = false
         }
         currentGeneration.removeAll()
         // only remains for the next
         for creature in nextGeneration {
             // display nextGeneration
-            world[creature.0][creature.1].change(true)
+            world[creature.0][creature.1] = true
         }
         
         // swap arrays for next generation
@@ -128,7 +129,7 @@ class ConwayGame: ConwayGamePtcl {
         // 2. two or more alive neighbours alive lives for the next generation
         // 3. more than 3 neighbours dies
         // 4. if exactly 3 alive and its empty turns alive.
-        let alive: Bool = world[line][col].live
+        let alive: Bool = world[line][col]
         let neighboursAlive: Int = getNeighbours(x:line, y:col)
         // print("validation \(line, col), alive: \(alive), neighbours active: \(neighboursAlive)")
         if alive {
@@ -147,29 +148,20 @@ class ConwayGame: ConwayGamePtcl {
     }
     // REMARK: when a button is pressed adds or removes from world
     func toggleCell(line: Int, col: Int) {
-        let cell = world[line][col]
-        if cell.live {
+        let cellState = world[line][col]
+        if cellState {
             // exists
-            cell.change(false)
+            world[line][col] = false
             removeCurrentGeneration(line: line, col: col)
         } else {
             // new to current
-            cell.change(true)
+            world[line][col] = true
             appendCurrentGeneration(line: line, col: col)
         }
     }
     
-    func appendCell(cell: SquareCell) {
-        if let row = cell.row {
-            if let col = cell.col {
-                if world[row][col] != cell {
-                    // print("new cell \(row, cell.col)")
-                    world[row][col] = cell
-                } else {
-                    print("we already put \(row, cell.col)")
-                }
-            }
-        }
+    func getCellAt(row: Int, col: Int) -> Bool {
+        return world[row][col]
     }
     
     func appendCurrentGeneration(line:Int, col: Int) {
@@ -219,7 +211,7 @@ class ConwayGame: ConwayGamePtcl {
         for cell in arr {
             let line = cell.0
             let col  = cell.1
-            sum = sum + (world[line][col].live ? 1 : 0)
+            sum = sum + (world[line][col] ? 1 : 0)
         }
         return sum
     }

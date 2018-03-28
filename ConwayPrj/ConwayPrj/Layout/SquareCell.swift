@@ -23,7 +23,7 @@ class SquareCell: UICollectionViewCell {
     }
     
     func change(_ state:Bool) {
-        self.backgroundColor = self.backgroundColor == UIColor.black ? UIColor.white : UIColor.black
+        self.backgroundColor = state ? UIColor.black : UIColor.white
         self.live = state
     }
 }
