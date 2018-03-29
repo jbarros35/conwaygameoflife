@@ -67,6 +67,7 @@ class ConwayGame: ConwayGamePtcl {
     // REMARK: run current generation and prepare next.
     func runGeneration() {
         gameStatus = .RUNNING
+        print("run generation \(generations)")
         lastIndexAllowed = worldSize-1
         generations = generations + 1
         if currentGeneration.isEmpty {
