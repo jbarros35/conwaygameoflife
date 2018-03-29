@@ -56,9 +56,6 @@ class FreePlayViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! SquareCell
         
-        if let label = cell.viewWithTag(1) as? UILabel {
-            label.text = "\(indexPath.section),\(indexPath.row)"
-        }
         // get World reference
         if let cellWorldState = self.gameLogic?.getCellAt(row: indexPath.section, col: indexPath.row) {
             cell.change(cellWorldState)
@@ -70,8 +67,6 @@ class FreePlayViewController: UICollectionViewController {
     // REMARK: click on cell and change it state
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let cell = collectionView.cellForItem(at: indexPath) as? SquareCell {
-            print("You selected cell line/section: #\(indexPath.section), row: \(indexPath.row), state: \(cell.live), item: \(indexPath.item)")
-           
             if let status = self.gameLogic?.gameStatus {
                 switch status {
                 case .PAUSED:
@@ -136,29 +131,6 @@ class FreePlayViewController: UICollectionViewController {
             self.collectionView?.reloadData()
         }
         
-    }
-
-    func updateGrid() {
-        if let currentGeneration = self.gameLogic?.currentGeneration {
-            // clean previous history
-            print("erase: \(self.gameLogic?.staleGeneration)")
-            for oldCell in (self.gameLogic?.staleGeneration)! {
-                if let cell = self.collectionView?.cellForItem(at: IndexPath(row: oldCell.0, section: oldCell.1)) as? SquareCell {
-                    // erase it!
-                    cell.live = false
-                    cell.backgroundColor = UIColor.white
-                }
-            }
-            print("insert: \(currentGeneration)")
-            for cellW in currentGeneration {
-                if let cell = self.collectionView?.cellForItem(at: IndexPath(row: cellW.0, section: cellW.1)) as? SquareCell {
-                    if let state = self.gameLogic?.getCellAt(row: cellW.0, col: cellW.1) {
-                        cell.live = true
-                        cell.backgroundColor = UIColor.black
-                    }
-                }
-            }
-        }
     }
     
     func startNewGame() {
