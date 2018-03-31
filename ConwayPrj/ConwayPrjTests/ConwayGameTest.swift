@@ -17,24 +17,7 @@ class ConwayGameTest: XCTestCase {
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
-        game = ConwayGame()
-        game.worldSize = 10
-        var world = game.world
-        let worldSize = game.worldSize
-        for row in 0 ..< worldSize {
-            var line:[SquareButton] = []
-            for col in 0 ..< worldSize {
-                
-                let square: SquareButton = FreePlayViewController.buttonSquare(row: row, col: col, frameWidth: framewidth, worldSize: worldSize).squareButton
-                
-                // self.myView.addSubview(square)
-                // self.squareButtons.append(square)
-                line.append(square)
-            }
-            // append line of squares to game
-            world.append(line)
-        }
-        game.world = world
+        game = ConwayGame(worldSize: 10)
     }
     
     override func tearDown() {
@@ -43,7 +26,7 @@ class ConwayGameTest: XCTestCase {
     }
     
     func testFillWorld() {
-        XCTAssertEqual(game.getCurrentSize(), 0)
+        XCTAssertEqual(game.world.count, 10)
     }
     
     func testToggleCell() {
@@ -75,7 +58,7 @@ class ConwayGameTest: XCTestCase {
         XCTAssertEqual("\(game.gameStatus!)", "OVER")
     }
     
-    func testGameStable() {
+    func testGameRepeats() {
         game.toggleCell(line: 0, col: 0)
         game.toggleCell(line: 1, col: 0)
         game.toggleCell(line: 2, col: 0)
@@ -83,7 +66,7 @@ class ConwayGameTest: XCTestCase {
         game.runGeneration()
         game.runGeneration()
         game.runGeneration()
-        XCTAssertEqual("\(game.gameStatus!)", "STABLE")
+        XCTAssertEqual("\(game.currentGeneration)", "\([(0, 0), (2, 0), (1, 0)])")
     }
 
     func testFiveGenerationsBeyond() {
@@ -100,13 +83,6 @@ class ConwayGameTest: XCTestCase {
         game.runGeneration()
         game.runGeneration()
         XCTAssertEqual("\(game.gameStatus!)", "RUNNING")
-    }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
     }
     
 }
