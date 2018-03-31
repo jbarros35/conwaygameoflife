@@ -79,20 +79,21 @@ class FreePlayViewController: UICollectionViewController {
                     // controlButton.setOn(false, animated: false)
                     // we just pause
                     self.gameLogic?.changeStatus(status: .PAUSED)
-                    showMessage(title: "Game is paused!", message: "You'd tap on the screen select your cells, when you are ready hold tap for 1 second to continue.")
+                    MessagesHelper.showStandardMessage(reference: self, title: "Game is paused!", message: "You'd tap on the screen select your cells, when you are ready hold tap for 1 second to continue.")
                 case .STABLE:
                     changeButton(cell: cell, indexPath: indexPath)
                     // controlButton.setOn(false, animated: false)
                     self.timer?.invalidate()
                 case .OVER:
                     // controlButton.setOn(false, animated: false)
-                    showMessage(title: "Game is over!", message: "The game terminated, all creatures are dead.")
+                    MessagesHelper.showStandardMessage(reference: self, title: "Game is over!", message: "The game terminated, all creatures are dead.")
                     self.timer?.invalidate()
                 }
             }
             
         }
     }
+    
     // REMARK: change the state inside World referenced.
     func changeButton(cell: SquareCell, indexPath: IndexPath) {
          if cell.live ?? true {
@@ -115,11 +116,11 @@ class FreePlayViewController: UICollectionViewController {
                 self.gameLogic?.runGeneration()
             case .OVER:
                 self.collectionView?.reloadData()
-                showMessage(title: "Game is over!", message: "The game terminated, all creatures are dead.")
+                MessagesHelper.showStandardMessage(reference: self, title: "Game is over!", message: "The game terminated, all creatures are dead.")
                 self.timer?.invalidate()
             case .STABLE:
                 self.collectionView?.reloadData()
-                showMessage(title: "Game is stopped!", message: "The game isn't evolving anymore and you must put new creatures in the world.")
+                MessagesHelper.showStandardMessage(reference: self, title: "Game is stopped!", message: "The game isn't evolving anymore and you must put new creatures in the world.")
                 self.timer?.invalidate()
             case .STOPPED:
                 self.collectionView?.reloadData()
@@ -158,10 +159,10 @@ class FreePlayViewController: UICollectionViewController {
                 }
             } else {
                 if self.gameLogic?.gameStatus != .OVER {
-                    showMessage(title: "Game isn't valid!", message: "Select some cells to start the game.")
+                    MessagesHelper.showStandardMessage(reference: self, title: "Game isn't valid!", message: "Select some cells to start the game.")
                 } else {
                     // controlButton.setOn(false, animated: false)
-                    showMessage(title: "Empty World!", message: "Game is over, please restart")
+                    MessagesHelper.showStandardMessage(reference: self, title: "Empty World!", message: "Game is over, please restart")
                 }
             }
         } else {
@@ -177,60 +178,38 @@ class FreePlayViewController: UICollectionViewController {
                 userInfo: nil, repeats: true)
             self.gameLogic?.changeStatus(status: .RUNNING)
     }
-
+    
     @objc private func pinchHandler(gesture: UIPinchGestureRecognizer) {
         if let view = gesture.view {
+           
             switch gesture.state {
             case .changed:
                 let pinchCenter = CGPoint(x: gesture.location(in: view).x - view.bounds.midX,
                                           y: gesture.location(in: view).y - view.bounds.midY)
-                let transform = view.transform.translatedBy(x: pinchCenter.x, y: pinchCenter.y)
+                let transform = self.collectionView?.transform.translatedBy(x: pinchCenter.x, y: pinchCenter.y)
                     .scaledBy(x: gesture.scale, y: gesture.scale)
                     .translatedBy(x: -pinchCenter.x, y: -pinchCenter.y)
-                view.transform = transform
+                self.collectionView?.transform = transform!
                 gesture.scale = 1
             case .ended:
-                // Nice animation to scale down when releasing the pinch.
-                // OPTIONAL
-                UIView.animate(withDuration: 0.2, animations: {
-                    view.transform = CGAffineTransform.identity
-                })
+                break
             default:
                 return
             }
+            
         }
     }
     
     @objc func longPressed(sender: UILongPressGestureRecognizer)
     {
-        showStartMessage(title: "Start Game", message: "Are you ready for begin?")
+        MessagesHelper.showStartCancel(reference: self, title: "Start Game", message: "Are you ready to start?", callback: { action in
+            self.startNewGame()
+        })
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-
-    func showMessage(title: String, message: String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-        alert.view.setNeedsLayout()
-        self.present(alert, animated: true, completion: nil)
-    }
-    
-    func showStartMessage(title: String, message: String) {
-        // create the alert
-        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
-        
-        // add the actions (buttons)
-        alert.addAction(UIAlertAction(title: "Start", style: UIAlertActionStyle.default, handler: { action in
-            self.startNewGame()
-        }))
-        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil))
-        
-        // show the alert
-        alert.view.setNeedsLayout()
-        self.present(alert, animated: true, completion: nil)
     }
     
 }

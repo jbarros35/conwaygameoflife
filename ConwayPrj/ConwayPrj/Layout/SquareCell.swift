@@ -18,8 +18,8 @@ class SquareCell: UICollectionViewCell {
     }
     
     func setup() {
-        self.layer.borderWidth = 1.0
-        self.layer.borderColor = UIColor.lightGray.cgColor
+        self.layer.borderWidth = 0.5
+        self.layer.borderColor = UIColor.gray.cgColor
         self.live = false
     }
     
@@ -27,18 +27,6 @@ class SquareCell: UICollectionViewCell {
         self.backgroundColor = state ? UIColor.black : UIColor.white
         self.live = state
     }
-    /*
-    override var isSelected: Bool {
-        willSet {
-            if isSelected {
-                if let active = self.live {
-                    change(!active)
-                } else {
-                    change(true)
-                }
-            }
-        }
-    }
- */
+    
 }
 
