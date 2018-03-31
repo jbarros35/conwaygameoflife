@@ -131,6 +131,12 @@ class FreePlayViewController: UICollectionViewController {
             }
             self.collectionView?.reloadData()
         }
+        // it validate history repeatition.
+        if let generationsHistory = self.gameLogic?.generationsHistory {
+            if generationsHistory.contains("\(self.gameLogic?.currentGeneration ?? [])") {
+                self.gameLogic?.gameStatus = .STABLE
+            }
+        }
         
     }
     

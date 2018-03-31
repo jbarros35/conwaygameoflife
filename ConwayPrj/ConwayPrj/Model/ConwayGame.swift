@@ -20,7 +20,7 @@ protocol ConwayGamePtcl {
     
     typealias T = GameStatus
     
-    var gameStatus:GameStatus? {get}
+    var gameStatus:GameStatus? {get set}
     var generations: Int {get set}
     var nextGeneration: [(Int,Int)] {get}
     var currentGeneration: [(Int,Int)] {get}
@@ -67,7 +67,6 @@ class ConwayGame: ConwayGamePtcl {
     // REMARK: run current generation and prepare next.
     func runGeneration() {
         gameStatus = .RUNNING
-        print("run generation \(generations)")
         lastIndexAllowed = worldSize-1
         generations = generations + 1
         if currentGeneration.isEmpty {
@@ -75,16 +74,7 @@ class ConwayGame: ConwayGamePtcl {
             return
         }
         
-        if !generationsHistory.contains("\(currentGeneration)") {
-            if generationsHistory.count >= 5 {
-                generationsHistory.removeFirst()
-            }
-            generationsHistory.append("\(currentGeneration)")
-            staleGeneration = currentGeneration
-        } else {
-            gameStatus = .STABLE
-            return
-        }
+        updateGenerations()
         
         // erase born and life arrays
         nextGeneration.removeAll()
@@ -117,11 +107,20 @@ class ConwayGame: ConwayGamePtcl {
         nextGeneration.removeAll()
     }
     
+    // REMARK: update generations History
+    func updateGenerations() {
+        if generationsHistory.count >= 5 {
+            generationsHistory.removeFirst()
+        }
+        generationsHistory.append("\(currentGeneration)")
+        staleGeneration = currentGeneration
+    }
+    
     func changeStatus(status: GameStatus) {
         gameStatus = status
     }
     
-    // check who is alive
+    //REMARK: check who is alive and how dies
     func validateLife(line:Int,col:Int) {
         // 1. less than 2 neighbours alive dies
         // 2. two or more alive neighbours alive lives for the next generation
