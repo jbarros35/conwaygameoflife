@@ -10,6 +10,8 @@
 		820D8716207034D400645DDC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 820D8714207034D400645DDC /* Main.storyboard */; };
 		8211EE76206EABAB00E546BF /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8211EE75206EABAB00E546BF /* MenuViewController.swift */; };
 		8211EE79206EAEC800E546BF /* InstructionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8211EE78206EAEC800E546BF /* InstructionsViewController.swift */; };
+		8227BFA32070ECCC00462C26 /* MissionsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8227BFA22070ECCC00462C26 /* MissionsModel.swift */; };
+		8227BFA52070F80000462C26 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8227BFA42070F80000462C26 /* GameViewController.swift */; };
 		82A222172067BF790080F023 /* ConwayGameTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A2220F2067B6E30080F023 /* ConwayGameTest.swift */; };
 		82A222352067CEB90080F023 /* FreePlayViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A222342067CEB90080F023 /* FreePlayViewControllerTest.swift */; };
 		82A2223720680AD60080F023 /* SquareCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A2223620680AD60080F023 /* SquareCell.swift */; };
@@ -62,10 +64,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		820D87122070338900645DDC /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		820D8715207034D400645DDC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = ConwayPrj/Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8211EE75206EABAB00E546BF /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		8211EE78206EAEC800E546BF /* InstructionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionsViewController.swift; sourceTree = "<group>"; };
+		8227BFA22070ECCC00462C26 /* MissionsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionsModel.swift; sourceTree = "<group>"; };
+		8227BFA42070F80000462C26 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		82A2220D2067B6E30080F023 /* ConwayGameTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ConwayGameTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		82A2220F2067B6E30080F023 /* ConwayGameTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConwayGameTest.swift; sourceTree = "<group>"; };
 		82A2221C2067C71D0080F023 /* ViewControllerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ViewControllerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -135,14 +138,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		820D87112070338900645DDC /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				820D87122070338900645DDC /* XCTest.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		8211EE74206EAB8E00E546BF /* Main */ = {
 			isa = PBXGroup;
 			children = (
@@ -150,6 +145,7 @@
 				82A788F32062F00E000CE57B /* FreePlayViewController.swift */,
 				8211EE75206EABAB00E546BF /* MenuViewController.swift */,
 				8211EE78206EAEC800E546BF /* InstructionsViewController.swift */,
+				8227BFA42070F80000462C26 /* GameViewController.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -167,6 +163,7 @@
 			isa = PBXGroup;
 			children = (
 				82A7892E206436BF000CE57B /* ConwayGame.swift */,
+				8227BFA22070ECCC00462C26 /* MissionsModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -178,7 +175,6 @@
 				82A789052062F00E000CE57B /* ConwayPrjTests */,
 				82A789102062F00E000CE57B /* ConwayPrjUITests */,
 				82A788EF2062F00E000CE57B /* Products */,
-				820D87112070338900645DDC /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -493,6 +489,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8227BFA32070ECCC00462C26 /* MissionsModel.swift in Sources */,
 				82A2223720680AD60080F023 /* SquareCell.swift in Sources */,
 				8211EE76206EABAB00E546BF /* MenuViewController.swift in Sources */,
 				82A788F42062F00E000CE57B /* FreePlayViewController.swift in Sources */,
@@ -501,6 +498,7 @@
 				8211EE79206EAEC800E546BF /* InstructionsViewController.swift in Sources */,
 				82A788F22062F00E000CE57B /* AppDelegate.swift in Sources */,
 				82C9AF1A207024F50031CFE1 /* MissionViewController.swift in Sources */,
+				8227BFA52070F80000462C26 /* GameViewController.swift in Sources */,
 				82C9AF17207005320031CFE1 /* MessagesHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

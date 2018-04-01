@@ -8,26 +8,7 @@
 
 import UIKit
 
-
-let reuseIdentifier = "customCell"
-
-extension FreePlayViewController {
-    
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return worldSize
-    }
-    
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return worldSize
-    }
-    
-}
-
-class FreePlayViewController: UICollectionViewController {
-    
-    var gameLogic:ConwayGamePtcl?
-    let worldSize = 30
-    var timer:Timer?
+class FreePlayViewController: GameViewController {
     
     required init?(coder aDecoder: NSCoder)
     {
@@ -36,11 +17,6 @@ class FreePlayViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.collectionView?.isPrefetchingEnabled = false
-        self.collectionView?.dataSource = self
-        self.collectionView?.delegate = self
-        gameLogic = ConwayGame(worldSize: worldSize)
-        gameLogic?.changeStatus(status: .STOPPED)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -51,18 +27,6 @@ class FreePlayViewController: UICollectionViewController {
             let pinchRecognizer = UIPinchGestureRecognizer(target: self, action: #selector(pinchHandler(gesture:)))
             self.view.addGestureRecognizer(pinchRecognizer)
         }
-    }
-    
-    // REMARK: load cells into collectionView
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! SquareCell
-        
-        // get World reference
-        if let cellWorldState = self.gameLogic?.getCellAt(row: indexPath.section, col: indexPath.row) {
-            cell.change(cellWorldState)
-        }
-        
-        return cell
     }
     
     // REMARK: click on cell and change it state
@@ -92,19 +56,6 @@ class FreePlayViewController: UICollectionViewController {
                 }
             }
             
-        }
-    }
-    
-    // REMARK: change the state inside World referenced.
-    func changeButton(cell: SquareCell, indexPath: IndexPath) {
-         if cell.live ?? true {
-            cell.change(false)
-        } else {
-            cell.change(true)
-        }
-        
-        if gameLogic?.getCellAt(row: indexPath.row, col: indexPath.section) != nil {
-            gameLogic?.toggleCell(line: indexPath.section, col: indexPath.row)
         }
     }
     
@@ -138,11 +89,9 @@ class FreePlayViewController: UICollectionViewController {
                 self.gameLogic?.gameStatus = .STABLE
             }
         }
-        
     }
     
     func startNewGame() {
-        
         //start new game
         if let game = self.gameLogic {
             if game.getCurrentSize() > 0 {
@@ -188,7 +137,6 @@ class FreePlayViewController: UICollectionViewController {
     
     @objc private func pinchHandler(gesture: UIPinchGestureRecognizer) {
         if let view = gesture.view {
-           
             switch gesture.state {
             case .changed:
                 let pinchCenter = CGPoint(x: gesture.location(in: view).x - view.bounds.midX,
@@ -203,11 +151,10 @@ class FreePlayViewController: UICollectionViewController {
             default:
                 return
             }
-            
         }
     }
     
-    @objc func longPressed(sender: UILongPressGestureRecognizer)
+    @objc override func longPressed(sender: UILongPressGestureRecognizer)
     {
         MessagesHelper.showStartCancel(reference: self, title: "Start Game", message: "Are you ready to start?", callback: { action in
             self.startNewGame()

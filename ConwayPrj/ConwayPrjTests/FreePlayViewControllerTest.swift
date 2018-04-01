@@ -44,6 +44,12 @@ class FreePlayViewControllerTest: XCTestCase {
         controller.startNewGame()
     }
     
+    func testDidSelectItemAt() {
+        // override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)
+        controller.collectionView((self.controller?.collectionView!)!, didSelectItemAt: IndexPath(row: 0, section: 0))
+     //    XCTAssertEqual(controller.gameLogic?.getCellAt(row: 0, col: 0), true)
+    }
+    
     func testSTABLE() {
         controller.changeButton(cell: squareCell(), indexPath: IndexPath(row: 0, section: 0)) // on
         controller.changeButton(cell: squareCell(), indexPath: IndexPath(row: 0, section: 1))

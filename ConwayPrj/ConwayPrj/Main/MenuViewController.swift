@@ -11,4 +11,6 @@ import UIKit
 
 class MenuViewController: UIViewController {
     
+    var missions: MissionsModel?
+    
 }
