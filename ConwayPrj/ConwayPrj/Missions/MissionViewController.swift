@@ -15,7 +15,7 @@ class MissionViewController: GameViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        MessagesHelper.showStandardMessage(reference: self, title: "Mission 1", message: "You can play several challenging missions, every mission accomplished will send you the next. If you want stop hold screen for 1 second or just back.")
+        MessagesHelper.showStandardMessage(reference: self, title: "Missions", message: "You can play several challenging missions, every mission accomplished will send you the next. If you want stop hold screen for 1 second or just back.")
     }
     
     // REMARK: click on cell and change it state
@@ -128,8 +128,8 @@ class MissionViewController: GameViewController {
     // REMARK: restart mission
     func restartGame() {
         self.timer?.invalidate()
-        gameLogic = ConwayGame(worldSize: worldSize)
-        gameLogic?.changeStatus(status: .STOPPED)
+        self.gameLogic = ConwayGame(worldSize: worldSize)
+        self.gameLogic?.changeStatus(status: .STOPPED)
         self.collectionView?.reloadData()
         self.collectionView?.setNeedsDisplay()
     }

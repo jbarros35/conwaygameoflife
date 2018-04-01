@@ -22,14 +22,17 @@ class MissionsModel {
     var generationsCount: Int?
     var missionFailed: Bool?
     var missionRules: [(MissionTypes, [Int])]?
+    var missionDescription: String?
     
-    init (maxMoves: Int = 0, playerCells: Int = 0, enemyCells: Int = 0, generationsCount: Int = 0, missionFailed: Bool = false, missionRules: [(MissionTypes, [Int])] = []) {
+    init (maxMoves: Int = 0, playerCells: Int = 0, enemyCells: Int = 0, generationsCount: Int = 0, missionFailed: Bool = false,
+          missionRules: [(MissionTypes, [Int])] = [], missionDescription: String = "") {
         self.maxMoves = maxMoves
         self.playerCells = playerCells
         self.enemyCells = enemyCells
         self.generationsCount = generationsCount
         self.missionFailed = missionFailed
         self.missionRules = missionRules
+        self.missionDescription = missionDescription
     }
     
     //REMARK: process mission rules, UPDATE status in missions array
@@ -57,6 +60,10 @@ class MissionsModel {
 
 class Mission1: MissionsModel {
     
+    init() {
+        super.init()
+        self.missionDescription = "Evolve your cells until reach 10th generation."
+    }
     // current turns are not greater than target turn
     lazy var rule1 = MissionTypes.MissionTurns({ [unowned self] in
         if let turns = self.generationsCount {
