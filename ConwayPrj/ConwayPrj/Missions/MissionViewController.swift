@@ -11,11 +11,18 @@ import UIKit
 
 class MissionViewController: GameViewController {
     
-    var missions: MissionsModel?
+    var currentMission: MissionsModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadMissions()
         MessagesHelper.showStandardMessage(reference: self, title: "Missions", message: "You can play several challenging missions, every mission accomplished will send you the next. If you want stop hold screen for 1 second or just back.")
+    }
+    
+    func loadMissions() {
+        // currentMission = MissionsModel(missionRules: [])
+        currentMission = Mission1()
+        // currentMission?.missionRules = [(mission1.rule1, [5])]
     }
     
     // REMARK: click on cell and change it state
@@ -23,11 +30,15 @@ class MissionViewController: GameViewController {
         if let cell = collectionView.cellForItem(at: indexPath) as? SquareCell {
             if let status = self.gameLogic?.gameStatus {
                 switch status {
-                case .PAUSED:
+                case .PAUSED, .STOPPED:
+                    // validate how many moves player already did.
+                    if let maxMoves = currentMission?.maxMoves, maxMoves <= playerCellsCount {
+                        MessagesHelper.showStartCancel(reference: self, title: "Mission rule!", message: "You are not allowed more than \(maxMoves), you need to start the mission.", callback: { action in
+                            self.startNewGame()
+                        })
+                        return
+                    }
                     // we change button state
-                    changeButton(cell: cell, indexPath: indexPath)
-                case .STOPPED:
-                    // we change button
                     changeButton(cell: cell, indexPath: indexPath)
                 case .RUNNING:
                     // controlButton.setOn(false, animated: false)
@@ -36,7 +47,7 @@ class MissionViewController: GameViewController {
                     MessagesHelper.showYesNo(reference: self, title: "Game is paused!", message: "Do you want to restart mission or continue?", callbackYes: { action in
                         self.restartGame()
                     }, callbackNo: { action in
-                        self.runTimer()
+                        self.startMission()
                     }, buttonText: ["Restart", "Continue"])
                 case .OVER:
                     // controlButton.setOn(false, animated: false)
@@ -49,6 +60,10 @@ class MissionViewController: GameViewController {
         }
     }
     
+    func startMission() {
+        self.runTimer()
+    }
+    
     // REMARK: runs new generation while is RUNNING
     func runTimer() {
         self.timer = Timer.scheduledTimer(
@@ -59,27 +74,32 @@ class MissionViewController: GameViewController {
     
     // REMARK: run generation and update status in the view
     @objc func advanceGeneration() {
+        // check mission objectives.
+        updateMissionVariables()
         if let status = self.gameLogic?.gameStatus {
             switch status {
             case .RUNNING:
                 self.gameLogic?.runGeneration()
             case .OVER:
-                self.collectionView?.reloadData()
                 MessagesHelper.showStandardMessage(reference: self, title: "Mission is over!", message: "The missions goals weren't accomplished, do you want to try again?")
                 self.timer?.invalidate()
-            case .STABLE:
-                self.collectionView?.reloadData()
-                MessagesHelper.showStandardMessage(reference: self, title: "Game is stopped!", message: "The game isn't evolving anymore and you must put new creatures in the world.")
-                self.timer?.invalidate()
             case .STOPPED:
-                self.collectionView?.reloadData()
                 self.timer?.invalidate()
             case .PAUSED:
-                self.collectionView?.reloadData()
                 self.timer?.invalidate()
+            default: self.timer?.invalidate()
             }
             self.collectionView?.reloadData()
         }
+        // FIX: for the future missions fix it considering enemy x players cells.
+        if let currentGeneration = self.gameLogic?.getCurrentSize() {
+            self.playerCellsCount = currentGeneration
+        }
+    }
+    
+    func updateMissionVariables() {
+        currentMission?.generationsCount = self.gameLogic?.generations
+        currentMission?.playerCells = self.playerCellsCount
     }
     
     @objc override func longPressed(sender: UILongPressGestureRecognizer)

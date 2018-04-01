@@ -59,13 +59,15 @@ class MissionsModel {
 }
 
 class Mission1: MissionsModel {
-    
-    init() {
-        super.init()
-        self.missionDescription = "Evolve your cells until reach 10th generation."
+
+    init(maxMoves: Int = 6) {
+        super.init(maxMoves: maxMoves)
+        self.maxMoves = maxMoves
     }
     // current turns are not greater than target turn
     lazy var rule1 = MissionTypes.MissionTurns({ [unowned self] in
+        self.missionDescription = "Evolve your cells until reach \($0)th generation starting with no more than \(self.maxMoves) cells."
+        
         if let turns = self.generationsCount {
             if let current =  $0, turns > current {
                 return false

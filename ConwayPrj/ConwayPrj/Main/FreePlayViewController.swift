@@ -27,6 +27,7 @@ class FreePlayViewController: GameViewController {
             let pinchRecognizer = UIPinchGestureRecognizer(target: self, action: #selector(pinchHandler(gesture:)))
             self.view.addGestureRecognizer(pinchRecognizer)
         }
+        MessagesHelper.showStandardMessage(reference: self, title: "Hello!", message: "This is the freeplay of Conway Game, you can set your cells everywhere, when ready to begin just tap and hold screen during 1 second to begin playing.")
     }
     
     // REMARK: click on cell and change it state

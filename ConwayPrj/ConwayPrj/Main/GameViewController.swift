@@ -34,6 +34,7 @@ extension GameViewController {
 }
 
 protocol GameView {
+    var playerCellsCount: Int {get set}
     var gameLogic:ConwayGamePtcl? {get set}
     var timer:Timer? {get set}
     var worldSize: Int {get set}
@@ -43,6 +44,7 @@ protocol GameView {
 
 class GameViewController: UICollectionViewController, GameView {
     
+    var playerCellsCount: Int = 0
     var worldSize: Int = 30
     var gameLogic: ConwayGamePtcl?
     var timer: Timer?
@@ -67,8 +69,10 @@ class GameViewController: UICollectionViewController, GameView {
     // REMARK: change the state inside World referenced.
     func changeButton(cell: SquareCell, indexPath: IndexPath) {
         if cell.live ?? true {
+            playerCellsCount = playerCellsCount - 1
             cell.change(false)
         } else {
+            playerCellsCount = playerCellsCount + 1
             cell.change(true)
         }
         
