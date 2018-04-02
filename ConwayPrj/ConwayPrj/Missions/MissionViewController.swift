@@ -11,7 +11,7 @@ import UIKit
 
 class MissionViewController: GameViewController {
     
-    var currentMission: MissionsModel?
+    var currentMission: Mission?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,10 +19,23 @@ class MissionViewController: GameViewController {
         MessagesHelper.showStandardMessage(reference: self, title: "Missions", message: "You can play several challenging missions, every mission accomplished will send you the next. If you want stop hold screen for 1 second or just back.")
     }
     
+    class Mission {
+        var params: MissionsModel?
+        var successRule: (()->())
+        var failRule: (()->())
+        
+        init(params: MissionsModel? = nil, successRule: @escaping (()->()) = {() in}, failRule: @escaping (()->()) = {() in}) {
+            self.params = params
+            self.successRule = successRule
+            self.failRule = failRule
+        }
+        
+        let mission1Vars = MissionsModel(maxMoves: 6, generationsTarget: 5, type: .Turns, missionDescription: "Evolve your cells until 5th generation, using no more than 6 moves.")
+        
+    }
+    
     func loadMissions() {
-        // currentMission = MissionsModel(missionRules: [])
-        currentMission = Mission1()
-        // currentMission?.missionRules = [(mission1.rule1, [5])]
+        
     }
     
     // REMARK: click on cell and change it state
@@ -32,7 +45,7 @@ class MissionViewController: GameViewController {
                 switch status {
                 case .PAUSED, .STOPPED:
                     // validate how many moves player already did.
-                    if let maxMoves = currentMission?.maxMoves, maxMoves <= playerCellsCount {
+                    if let maxMoves = currentMission?.params?.maxMoves, maxMoves <= playerCellsCount {
                         MessagesHelper.showStartCancel(reference: self, title: "Mission rule!", message: "You are not allowed more than \(maxMoves), you need to start the mission.", callback: { action in
                             self.startNewGame()
                         })
@@ -81,7 +94,7 @@ class MissionViewController: GameViewController {
             case .RUNNING:
                 self.gameLogic?.runGeneration()
             case .OVER:
-                MessagesHelper.showStandardMessage(reference: self, title: "Mission is over!", message: "The missions goals weren't accomplished, do you want to try again?")
+                MessagesHelper.showStandardMessage(reference: self, title: "Mission is over!", message: "The missions goals weren't accomplished: \(String(describing: currentMission?.params?.missionDescription)) \n do you want to try again?")
                 self.timer?.invalidate()
             case .STOPPED:
                 self.timer?.invalidate()
@@ -97,9 +110,14 @@ class MissionViewController: GameViewController {
         }
     }
     
+    // REMARK:
     func updateMissionVariables() {
-        currentMission?.generationsCount = self.gameLogic?.generations
-        currentMission?.playerCells = self.playerCellsCount
+        currentMission?.params?.generationsTarget = self.gameLogic?.generations
+        currentMission?.params?.playerCells = self.playerCellsCount
+        currentMission?.failRule()
+        if let status = currentMission?.params?.status, status == .Failed {
+            self.gameLogic?.changeStatus(status: .OVER)
+        }
     }
     
     @objc override func longPressed(sender: UILongPressGestureRecognizer)
