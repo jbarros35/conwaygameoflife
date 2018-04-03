@@ -31,12 +31,26 @@ class MissionsModel {
     var type: MissionType?
     
     init (maxMoves: Int = 0, playerCells: Int = 0, enemyCells: Int = 0, generationsTarget: Int = 0, type: MissionType? = nil,
-          missionDescription: String = "") {
+          missionDescription: String = "", status: MissionStatus = .Running) {
         self.maxMoves = maxMoves
         self.playerCells = playerCells
         self.enemyCells = enemyCells
         self.generationsTarget = generationsTarget
         self.missionDescription = missionDescription
         self.type = type
+        self.status = status
     }
+}
+
+class Mission {
+    var params: MissionsModel?
+    var successRule: ((Int)->())
+    var failRule: ((Int)->())
+    
+    init(params: MissionsModel? = nil, successRule: @escaping ((Int)->()) = {(param) in}, failRule: @escaping ((Int)->()) = {(param) in}) {
+        self.params = params
+        self.successRule = successRule
+        self.failRule = failRule
+    }
+    
 }

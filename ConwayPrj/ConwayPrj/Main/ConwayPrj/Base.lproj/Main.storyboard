@@ -210,7 +210,7 @@
                 <splitViewController title="Conway Game" id="o0w-QF-0l2" sceneMemberID="viewController">
                     <connections>
                         <segue destination="Xq0-Xn-pmg" kind="relationship" relationship="masterViewController" id="vXb-Tc-EEj"/>
-                        <segue destination="SBK-Cl-0XN" kind="relationship" relationship="detailViewController" id="Hxj-O3-60c"/>
+                        <segue destination="SBK-Cl-0XN" kind="relationship" relationship="detailViewController" id="ugC-qL-Ygj"/>
                     </connections>
                 </splitViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="36M-vD-MlN" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -219,6 +219,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Hxj-O3-60c"/>
+        <segue reference="ugC-qL-Ygj"/>
     </inferredMetricsTieBreakers>
 </document>
