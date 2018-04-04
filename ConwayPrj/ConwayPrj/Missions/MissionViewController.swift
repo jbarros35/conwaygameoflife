@@ -25,15 +25,8 @@ class MissionViewController: GameViewController {
     func loadMissions() {
         // fist Mission
         let mission1Vars = MissionsModel(maxMoves: 6, generationsTarget: 5, type: .Turns, missionDescription: "Evolve your cells until 5th generation, using no more than 6 moves.")
-        let success01: ((Int)->()) = {[unowned self]
-            param in
-            if let target = mission1Vars.generationsTarget, target >= param {
-                self.currentMission?.params?.status = .Running
-            } else {
-                self.currentMission?.params?.status = .Success
-            }
-        }
-        self.currentMission = Mission(params: mission1Vars, successRule: success01)
+        self.currentMission = Mission(params: mission1Vars)
+        self.currentMission?.chainRules.append((self.currentMission?.generationsTargetRule)!)
     }
     
     // REMARK: click on cell and change it state
@@ -117,13 +110,13 @@ class MissionViewController: GameViewController {
         switch  missionType {
         case .Turns:
             if let generationsCount = self.gameLogic?.generations {
-                self.currentMission?.successRule(generationsCount)
+                self.currentMission?.successRule!(generationsCount)
                 self.currentMission?.failRule(generationsCount)
             }
         case .EnemyCells:
             break
         case .PlayerCells:
-            self.currentMission?.successRule(self.playerCellsCount)
+            self.currentMission?.successRule!(self.playerCellsCount)
             self.currentMission?.failRule(self.playerCellsCount)
             break
         }

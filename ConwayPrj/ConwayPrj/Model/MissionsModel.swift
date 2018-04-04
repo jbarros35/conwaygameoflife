@@ -44,8 +44,9 @@ class MissionsModel {
 
 class Mission {
     var params: MissionsModel?
-    var successRule: ((Int)->())
+    var successRule: ((Int)->())?
     var failRule: ((Int)->())
+    var chainRules: [(Int)->()] = []
     
     init(params: MissionsModel? = nil, successRule: @escaping ((Int)->()) = {(param) in}, failRule: @escaping ((Int)->()) = {(param) in}) {
         self.params = params
@@ -53,4 +54,23 @@ class Mission {
         self.failRule = failRule
     }
     
+    // keep running while target wasn't reach
+    lazy var generationsTargetRule: (Int)->() = {[unowned self]
+        param in
+        if let target = self.params?.generationsTarget, target >= param {
+            self.params?.status = .Running
+        } else {
+            self.params?.status = .Success
+        }
+    }
+    
+    // if player cell number are higher than a specified cap.
+    lazy var cellsCapRule: (Int) -> () = {[unowned self]
+        param in
+        if let capCells = self.params?.playerCells, capCells <= param {
+            self.params?.status = .Running
+        } else {
+            self.params?.status = .Failed
+        }
+    }
 }
