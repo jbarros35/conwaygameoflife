@@ -45,6 +45,8 @@
 		8227BFE82072B93200462C26 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8227BFE72072B93200462C26 /* LaunchScreen.storyboard */; };
 		8227BFEB20754DD200462C26 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8227BFEA20754DD200462C26 /* AboutViewController.swift */; };
 		8227BFED207560F200462C26 /* AboutViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8227BFEC207560F200462C26 /* AboutViewCell.swift */; };
+		8227BFF020768C8800462C26 /* AccountController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8227BFEF20768C8800462C26 /* AccountController.swift */; };
+		8227BFF220768DE800462C26 /* NetworkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8227BFF120768DE800462C26 /* NetworkHelper.swift */; };
 		82A222172067BF790080F023 /* ConwayGameTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A2220F2067B6E30080F023 /* ConwayGameTest.swift */; };
 		82A222352067CEB90080F023 /* FreePlayViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A222342067CEB90080F023 /* FreePlayViewControllerTest.swift */; };
 		82A2223720680AD60080F023 /* SquareCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A2223620680AD60080F023 /* SquareCell.swift */; };
@@ -135,6 +137,8 @@
 		8227BFE72072B93200462C26 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8227BFEA20754DD200462C26 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		8227BFEC207560F200462C26 /* AboutViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewCell.swift; sourceTree = "<group>"; };
+		8227BFEF20768C8800462C26 /* AccountController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountController.swift; sourceTree = "<group>"; };
+		8227BFF120768DE800462C26 /* NetworkHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkHelper.swift; sourceTree = "<group>"; };
 		82A2220D2067B6E30080F023 /* ConwayGameTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ConwayGameTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		82A2220F2067B6E30080F023 /* ConwayGameTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConwayGameTest.swift; sourceTree = "<group>"; };
 		82A2221C2067C71D0080F023 /* ViewControllerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ViewControllerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -269,6 +273,14 @@
 			path = About;
 			sourceTree = "<group>";
 		};
+		8227BFEE20768C6100462C26 /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				8227BFEF20768C8800462C26 /* AccountController.swift */,
+			);
+			path = Account;
+			sourceTree = "<group>";
+		};
 		82A2223A2069612E0080F023 /* Layout */ = {
 			isa = PBXGroup;
 			children = (
@@ -313,6 +325,7 @@
 		82A788F02062F00E000CE57B /* ConwayPrj */ = {
 			isa = PBXGroup;
 			children = (
+				8227BFEE20768C6100462C26 /* Account */,
 				8227BFE920754DAD00462C26 /* About */,
 				82C9AF18207024E60031CFE1 /* Missions */,
 				82A2223B206ABBAE0080F023 /* Model */,
@@ -351,6 +364,7 @@
 				82A788F12062F00E000CE57B /* AppDelegate.swift */,
 				82A788F82062F00E000CE57B /* Assets.xcassets */,
 				82C9AF16207005320031CFE1 /* MessagesHelper.swift */,
+				8227BFF120768DE800462C26 /* NetworkHelper.swift */,
 			);
 			path = Support;
 			sourceTree = "<group>";
@@ -648,6 +662,8 @@
 				82A788F42062F00E000CE57B /* FreePlayViewController.swift in Sources */,
 				82A2223920682B390080F023 /* CollectionLayout.swift in Sources */,
 				82A7892F206436BF000CE57B /* ConwayGame.swift in Sources */,
+				8227BFF220768DE800462C26 /* NetworkHelper.swift in Sources */,
+				8227BFF020768C8800462C26 /* AccountController.swift in Sources */,
 				8227BFEB20754DD200462C26 /* AboutViewController.swift in Sources */,
 				8211EE79206EAEC800E546BF /* InstructionsViewController.swift in Sources */,
 				82A788F22062F00E000CE57B /* AppDelegate.swift in Sources */,

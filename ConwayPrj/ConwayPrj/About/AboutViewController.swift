@@ -13,10 +13,13 @@ class AboutViewController: UIViewController, UICollectionViewDataSource, UIColle
     
     @IBOutlet weak var myCollectionView: UICollectionView!
 
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
+    
+    var topicsCount = 0
     var topics: [AnyObject]?
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 2
+        return topicsCount
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -70,7 +73,7 @@ class AboutViewController: UIViewController, UICollectionViewDataSource, UIColle
         myCollectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "aboutCell")
         myCollectionView!.backgroundColor = UIColor.white
         self.view.addSubview(myCollectionView!)*/
-        
+        spinner.startAnimating()
         loadListOfImages()
     }
     
@@ -80,7 +83,8 @@ class AboutViewController: UIViewController, UICollectionViewDataSource, UIColle
         
         // Define server side script URL
         let scriptUrl = "https://conwaygameios.herokuapp.com/about"
-        
+        // let scriptUrl = "http://localhost:3000/about"
+
         // Create NSURL Ibject
         let myUrl = URL(string: scriptUrl);
         
@@ -97,7 +101,7 @@ class AboutViewController: UIViewController, UICollectionViewDataSource, UIColle
             // Check for error
             if error != nil
             {
-                print("error=\(error)")
+                MessagesHelper.showStandardMessage(reference: self, title: "Error", message: "Error accessing internet, please check your connection.")
                 return
             }
             
@@ -109,13 +113,14 @@ class AboutViewController: UIViewController, UICollectionViewDataSource, UIColle
                     
                     DispatchQueue.main.async {
                         self.myCollectionView!.reloadData()
+                        self.spinner.stopAnimating()
+                        self.topicsCount = (self.topics?.count)!
                     }
                     
                 }
             } catch let error as NSError {
                 print(error.localizedDescription)
             }
-            
         }
         
         task.resume()

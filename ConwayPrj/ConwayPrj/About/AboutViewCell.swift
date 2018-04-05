@@ -21,6 +21,8 @@ class AboutViewCell: UICollectionViewCell {
         self.text.text = text
         self.titleTopic.sizeToFit()
         self.text.sizeToFit()
+        self.titleTopic.lineBreakMode = .byWordWrapping
+        self.text.lineBreakMode = .byWordWrapping
         guard let imgUrl = imageData else {
             return
         }
