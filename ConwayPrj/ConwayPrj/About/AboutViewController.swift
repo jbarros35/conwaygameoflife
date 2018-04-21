@@ -83,7 +83,6 @@ class AboutViewController: UIViewController, UICollectionViewDataSource, UIColle
         
         // Define server side script URL
         let scriptUrl = "https://conwaygameios.herokuapp.com/about"
-        // let scriptUrl = "http://localhost:3000/about"
 
         // Create NSURL Ibject
         let myUrl = URL(string: scriptUrl);
