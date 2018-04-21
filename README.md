@@ -29,7 +29,7 @@ For development requires XCode 9, Swift 4.0, MacOs High Sierra or earlier.
 
 <img src="/screenshots/start.png" alt="alt text" width="250" height="100">
 
-<img src="/screenshots/pattern.png" alt="alt text" width="200" height="500">
+<img src="/screenshots/pattern.png" alt="alt text" width="200" height="100">
 
 <img src="/screenshots/stoped.png" alt="alt text" width="200" height="500">
 
