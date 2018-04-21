@@ -27,7 +27,7 @@ Requires IOS 10 or earlier, tested on Iphone 6, 6S, SE, 8 or earlier versions.
 
 For development requires XCode 9, Swift 4.0, MacOs High Sierra or earlier.
 
-<img src="/screenshots/start.png" alt="alt text" width="250" height="500">
+<img src="/screenshots/start.png" alt="alt text" width="250" height="100">
 
 <img src="/screenshots/pattern.png" alt="alt text" width="200" height="500">
 
