@@ -4,8 +4,8 @@ class CollectionViewLayout: UICollectionViewLayout {
     
     // Used for calculating each cells CGRect on screen.
     // CGRect will define the Origin and Size of the cell.
-    var CELL_HEIGHT = 20.0
-    var CELL_WIDTH = 20.0
+    var CELL_HEIGHT = 30.0
+    var CELL_WIDTH = 30.0
     let STATUS_BAR = UIApplication.shared.statusBarFrame.height
     
     // Dictionary to hold the UICollectionViewLayoutAttributes for
@@ -33,7 +33,6 @@ class CollectionViewLayout: UICollectionViewLayout {
         
         // Only update header cells.
         if !dataSourceDidUpdate {
-            
             // Determine current content offsets.
             let xOffset = collectionView!.contentOffset.x
             let yOffset = collectionView!.contentOffset.y
