@@ -31,5 +31,18 @@ class MessagesHelper {
         alert.view.setNeedsLayout()
         reference.present(alert, animated: true, completion: nil)
     }
+    // REMARK: yes or no button alert
+    static func showYesNo(reference: UIViewController, title: String, message: String, callbackYes: @escaping (UIAlertAction)->(), callbackNo: @escaping (UIAlertAction)->(), buttonText: [String]) {
+        // create the alert
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+        
+        // add the actions (buttons)
+        alert.addAction(UIAlertAction(title: buttonText[0], style: UIAlertActionStyle.default, handler: callbackYes))
+        alert.addAction(UIAlertAction(title: buttonText[1], style: UIAlertActionStyle.cancel, handler: callbackNo))
+        
+        // show the alert
+        alert.view.setNeedsLayout()
+        reference.present(alert, animated: true, completion: nil)
+    }
     
 }

@@ -7,52 +7,51 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8207103F208A795000B2D4DC /* GameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8207103E208A795000B2D4DC /* GameController.swift */; };
 		820D8716207034D400645DDC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 820D8714207034D400645DDC /* Main.storyboard */; };
-		8211EE76206EABAB00E546BF /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8211EE75206EABAB00E546BF /* MenuViewController.swift */; };
-		8211EE79206EAEC800E546BF /* InstructionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8211EE78206EAEC800E546BF /* InstructionsViewController.swift */; };
-		82A222172067BF790080F023 /* ConwayGameTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A2220F2067B6E30080F023 /* ConwayGameTest.swift */; };
-		82A222352067CEB90080F023 /* FreePlayViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A222342067CEB90080F023 /* FreePlayViewControllerTest.swift */; };
+		8227BFB72071527900462C26 /* LaunchImage-Landscape~ipad_1024x768.png in Resources */ = {isa = PBXBuildFile; fileRef = 8227BFA72071527900462C26 /* LaunchImage-Landscape~ipad_1024x768.png */; };
+		8227BFB82071527900462C26 /* LaunchImage-Portrait~ipad_768x1024.png in Resources */ = {isa = PBXBuildFile; fileRef = 8227BFA82071527900462C26 /* LaunchImage-Portrait~ipad_768x1024.png */; };
+		8227BFB92071527900462C26 /* LaunchImage-Portrait@2x~ipad_1536x2008.png in Resources */ = {isa = PBXBuildFile; fileRef = 8227BFA92071527900462C26 /* LaunchImage-Portrait@2x~ipad_1536x2008.png */; };
+		8227BFBA2071527900462C26 /* LaunchImage-568h@2x~iphone_640x1136.png in Resources */ = {isa = PBXBuildFile; fileRef = 8227BFAA2071527900462C26 /* LaunchImage-568h@2x~iphone_640x1136.png */; };
+		8227BFBB2071527900462C26 /* LaunchImage-1242@3x~iphone6s-portrait_1242x2208.png in Resources */ = {isa = PBXBuildFile; fileRef = 8227BFAB2071527900462C26 /* LaunchImage-1242@3x~iphone6s-portrait_1242x2208.png */; };
+		8227BFBC2071527900462C26 /* LaunchImage-Landscape@2x~ipad_2048x1496.png in Resources */ = {isa = PBXBuildFile; fileRef = 8227BFAC2071527900462C26 /* LaunchImage-Landscape@2x~ipad_2048x1496.png */; };
+		8227BFBD2071527900462C26 /* LaunchImage-1242@3x~iphone6s-landscape_2208x1242.png in Resources */ = {isa = PBXBuildFile; fileRef = 8227BFAD2071527900462C26 /* LaunchImage-1242@3x~iphone6s-landscape_2208x1242.png */; };
+		8227BFBE2071527900462C26 /* LaunchImage-Landscape@2x~ipad_2048x1536.png in Resources */ = {isa = PBXBuildFile; fileRef = 8227BFAE2071527900462C26 /* LaunchImage-Landscape@2x~ipad_2048x1536.png */; };
+		8227BFBF2071527900462C26 /* LaunchImage-750@2x~iphone6-landscape_1334x750.png in Resources */ = {isa = PBXBuildFile; fileRef = 8227BFAF2071527900462C26 /* LaunchImage-750@2x~iphone6-landscape_1334x750.png */; };
+		8227BFC02071527900462C26 /* LaunchImage~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 8227BFB02071527900462C26 /* LaunchImage~ipad.png */; };
+		8227BFC12071527900462C26 /* LaunchImage-750@2x~iphone6-portrait_750x1334.png in Resources */ = {isa = PBXBuildFile; fileRef = 8227BFB12071527900462C26 /* LaunchImage-750@2x~iphone6-portrait_750x1334.png */; };
+		8227BFC22071527900462C26 /* LaunchImage-Portrait@2x~ipad_1536x2048.png in Resources */ = {isa = PBXBuildFile; fileRef = 8227BFB22071527900462C26 /* LaunchImage-Portrait@2x~ipad_1536x2048.png */; };
+		8227BFC32071527900462C26 /* LaunchImage-Landscape~ipad_1024x748.png in Resources */ = {isa = PBXBuildFile; fileRef = 8227BFB32071527900462C26 /* LaunchImage-Landscape~ipad_1024x748.png */; };
+		8227BFC42071527900462C26 /* LaunchImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 8227BFB42071527900462C26 /* LaunchImage.png */; };
+		8227BFC52071527900462C26 /* LaunchImage~iphone_640x960.png in Resources */ = {isa = PBXBuildFile; fileRef = 8227BFB52071527900462C26 /* LaunchImage~iphone_640x960.png */; };
+		8227BFC62071527900462C26 /* LaunchImage~iphone-320x480.png in Resources */ = {isa = PBXBuildFile; fileRef = 8227BFB62071527900462C26 /* LaunchImage~iphone-320x480.png */; };
+		8227BFD62071528700462C26 /* Icon-marketing-1024x1024.png in Resources */ = {isa = PBXBuildFile; fileRef = 8227BFC82071528600462C26 /* Icon-marketing-1024x1024.png */; };
+		8227BFD72071528700462C26 /* Icon-20x20@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8227BFC92071528600462C26 /* Icon-20x20@1x.png */; };
+		8227BFD82071528700462C26 /* Icon-29x29@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8227BFCA2071528600462C26 /* Icon-29x29@1x.png */; };
+		8227BFD92071528700462C26 /* Icon-76x76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8227BFCB2071528600462C26 /* Icon-76x76@2x.png */; };
+		8227BFDA2071528700462C26 /* Icon-60x60@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8227BFCC2071528600462C26 /* Icon-60x60@3x.png */; };
+		8227BFDB2071528700462C26 /* Icon-40x40@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8227BFCD2071528600462C26 /* Icon-40x40@2x.png */; };
+		8227BFDC2071528700462C26 /* Icon-29x29@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8227BFCE2071528600462C26 /* Icon-29x29@3x.png */; };
+		8227BFDD2071528700462C26 /* Icon-29x29@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8227BFCF2071528600462C26 /* Icon-29x29@2x.png */; };
+		8227BFDE2071528700462C26 /* Icon-76x76@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8227BFD02071528600462C26 /* Icon-76x76@1x.png */; };
+		8227BFDF2071528700462C26 /* Icon-40x40@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8227BFD12071528600462C26 /* Icon-40x40@3x.png */; };
+		8227BFE02071528700462C26 /* Contents.json in Resources */ = {isa = PBXBuildFile; fileRef = 8227BFD22071528600462C26 /* Contents.json */; };
+		8227BFE12071528700462C26 /* Icon-60x60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8227BFD32071528600462C26 /* Icon-60x60@2x.png */; };
+		8227BFE22071528700462C26 /* Icon-20x20@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8227BFD42071528600462C26 /* Icon-20x20@3x.png */; };
+		8227BFE32071528700462C26 /* Icon-20x20@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8227BFD52071528600462C26 /* Icon-20x20@2x.png */; };
+		8227BFE82072B93200462C26 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8227BFE72072B93200462C26 /* LaunchScreen.storyboard */; };
+		82850C83208CAD2C0050BE82 /* ConwayGameTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82850C82208CAD2C0050BE82 /* ConwayGameTest.swift */; };
+		82850C93208CBE150050BE82 /* GameControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82850C92208CBE150050BE82 /* GameControllerTest.swift */; };
 		82A2223720680AD60080F023 /* SquareCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A2223620680AD60080F023 /* SquareCell.swift */; };
 		82A2223920682B390080F023 /* CollectionLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A2223820682B390080F023 /* CollectionLayout.swift */; };
 		82A788F22062F00E000CE57B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A788F12062F00E000CE57B /* AppDelegate.swift */; };
-		82A788F42062F00E000CE57B /* FreePlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A788F32062F00E000CE57B /* FreePlayViewController.swift */; };
 		82A788F92062F00E000CE57B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 82A788F82062F00E000CE57B /* Assets.xcassets */; };
-		82A789122062F00E000CE57B /* ConwayPrjUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A789112062F00E000CE57B /* ConwayPrjUITests.swift */; };
 		82A7892F206436BF000CE57B /* ConwayGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A7892E206436BF000CE57B /* ConwayGame.swift */; };
 		82C9AF17207005320031CFE1 /* MessagesHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C9AF16207005320031CFE1 /* MessagesHelper.swift */; };
-		82C9AF1A207024F50031CFE1 /* MissionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C9AF19207024F50031CFE1 /* MissionViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		82A222122067B6E30080F023 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 82A788E62062F00E000CE57B /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 82A788ED2062F00E000CE57B;
-			remoteInfo = ConwayPrj;
-		};
-		82A222212067C71D0080F023 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 82A788E62062F00E000CE57B /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 82A788ED2062F00E000CE57B;
-			remoteInfo = ConwayPrj;
-		};
-		82A2222F2067CE690080F023 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 82A788E62062F00E000CE57B /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 82A788ED2062F00E000CE57B;
-			remoteInfo = ConwayPrj;
-		};
-		82A789032062F00E000CE57B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 82A788E62062F00E000CE57B /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 82A788ED2062F00E000CE57B;
-			remoteInfo = ConwayPrj;
-		};
-		82A7890E2062F00E000CE57B /* PBXContainerItemProxy */ = {
+		82850C79208CA6820050BE82 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 82A788E62062F00E000CE57B /* Project object */;
 			proxyType = 1;
@@ -62,49 +61,57 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		820D87122070338900645DDC /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		8204525120850E95003D205F /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		8207103E208A795000B2D4DC /* GameController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameController.swift; sourceTree = "<group>"; };
 		820D8715207034D400645DDC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = ConwayPrj/Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		8211EE75206EABAB00E546BF /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
-		8211EE78206EAEC800E546BF /* InstructionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionsViewController.swift; sourceTree = "<group>"; };
-		82A2220D2067B6E30080F023 /* ConwayGameTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ConwayGameTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		82A2220F2067B6E30080F023 /* ConwayGameTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConwayGameTest.swift; sourceTree = "<group>"; };
-		82A2221C2067C71D0080F023 /* ViewControllerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ViewControllerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		82A2222A2067CE690080F023 /* ViewControllerTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ViewControllerTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		82A222342067CEB90080F023 /* FreePlayViewControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreePlayViewControllerTest.swift; sourceTree = "<group>"; };
+		8227BFA72071527900462C26 /* LaunchImage-Landscape~ipad_1024x768.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LaunchImage-Landscape~ipad_1024x768.png"; sourceTree = "<group>"; };
+		8227BFA82071527900462C26 /* LaunchImage-Portrait~ipad_768x1024.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LaunchImage-Portrait~ipad_768x1024.png"; sourceTree = "<group>"; };
+		8227BFA92071527900462C26 /* LaunchImage-Portrait@2x~ipad_1536x2008.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LaunchImage-Portrait@2x~ipad_1536x2008.png"; sourceTree = "<group>"; };
+		8227BFAA2071527900462C26 /* LaunchImage-568h@2x~iphone_640x1136.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LaunchImage-568h@2x~iphone_640x1136.png"; sourceTree = "<group>"; };
+		8227BFAB2071527900462C26 /* LaunchImage-1242@3x~iphone6s-portrait_1242x2208.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LaunchImage-1242@3x~iphone6s-portrait_1242x2208.png"; sourceTree = "<group>"; };
+		8227BFAC2071527900462C26 /* LaunchImage-Landscape@2x~ipad_2048x1496.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LaunchImage-Landscape@2x~ipad_2048x1496.png"; sourceTree = "<group>"; };
+		8227BFAD2071527900462C26 /* LaunchImage-1242@3x~iphone6s-landscape_2208x1242.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LaunchImage-1242@3x~iphone6s-landscape_2208x1242.png"; sourceTree = "<group>"; };
+		8227BFAE2071527900462C26 /* LaunchImage-Landscape@2x~ipad_2048x1536.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LaunchImage-Landscape@2x~ipad_2048x1536.png"; sourceTree = "<group>"; };
+		8227BFAF2071527900462C26 /* LaunchImage-750@2x~iphone6-landscape_1334x750.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LaunchImage-750@2x~iphone6-landscape_1334x750.png"; sourceTree = "<group>"; };
+		8227BFB02071527900462C26 /* LaunchImage~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LaunchImage~ipad.png"; sourceTree = "<group>"; };
+		8227BFB12071527900462C26 /* LaunchImage-750@2x~iphone6-portrait_750x1334.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LaunchImage-750@2x~iphone6-portrait_750x1334.png"; sourceTree = "<group>"; };
+		8227BFB22071527900462C26 /* LaunchImage-Portrait@2x~ipad_1536x2048.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LaunchImage-Portrait@2x~ipad_1536x2048.png"; sourceTree = "<group>"; };
+		8227BFB32071527900462C26 /* LaunchImage-Landscape~ipad_1024x748.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LaunchImage-Landscape~ipad_1024x748.png"; sourceTree = "<group>"; };
+		8227BFB42071527900462C26 /* LaunchImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LaunchImage.png; sourceTree = "<group>"; };
+		8227BFB52071527900462C26 /* LaunchImage~iphone_640x960.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LaunchImage~iphone_640x960.png"; sourceTree = "<group>"; };
+		8227BFB62071527900462C26 /* LaunchImage~iphone-320x480.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LaunchImage~iphone-320x480.png"; sourceTree = "<group>"; };
+		8227BFC82071528600462C26 /* Icon-marketing-1024x1024.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-marketing-1024x1024.png"; sourceTree = "<group>"; };
+		8227BFC92071528600462C26 /* Icon-20x20@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-20x20@1x.png"; sourceTree = "<group>"; };
+		8227BFCA2071528600462C26 /* Icon-29x29@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-29x29@1x.png"; sourceTree = "<group>"; };
+		8227BFCB2071528600462C26 /* Icon-76x76@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-76x76@2x.png"; sourceTree = "<group>"; };
+		8227BFCC2071528600462C26 /* Icon-60x60@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-60x60@3x.png"; sourceTree = "<group>"; };
+		8227BFCD2071528600462C26 /* Icon-40x40@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-40x40@2x.png"; sourceTree = "<group>"; };
+		8227BFCE2071528600462C26 /* Icon-29x29@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-29x29@3x.png"; sourceTree = "<group>"; };
+		8227BFCF2071528600462C26 /* Icon-29x29@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-29x29@2x.png"; sourceTree = "<group>"; };
+		8227BFD02071528600462C26 /* Icon-76x76@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-76x76@1x.png"; sourceTree = "<group>"; };
+		8227BFD12071528600462C26 /* Icon-40x40@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-40x40@3x.png"; sourceTree = "<group>"; };
+		8227BFD22071528600462C26 /* Contents.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Contents.json; sourceTree = "<group>"; };
+		8227BFD32071528600462C26 /* Icon-60x60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-60x60@2x.png"; sourceTree = "<group>"; };
+		8227BFD42071528600462C26 /* Icon-20x20@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-20x20@3x.png"; sourceTree = "<group>"; };
+		8227BFD52071528600462C26 /* Icon-20x20@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-20x20@2x.png"; sourceTree = "<group>"; };
+		8227BFE72072B93200462C26 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		82850C74208CA6820050BE82 /* ConwayGamePrjTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ConwayGamePrjTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		82850C78208CA6820050BE82 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		82850C80208CAB9A0050BE82 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		82850C82208CAD2C0050BE82 /* ConwayGameTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConwayGameTest.swift; sourceTree = "<group>"; };
+		82850C92208CBE150050BE82 /* GameControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameControllerTest.swift; sourceTree = "<group>"; };
 		82A2223620680AD60080F023 /* SquareCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquareCell.swift; sourceTree = "<group>"; };
 		82A2223820682B390080F023 /* CollectionLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionLayout.swift; sourceTree = "<group>"; };
 		82A788EE2062F00E000CE57B /* ConwayPrj.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ConwayPrj.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		82A788F12062F00E000CE57B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		82A788F32062F00E000CE57B /* FreePlayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreePlayViewController.swift; sourceTree = "<group>"; };
 		82A788F82062F00E000CE57B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		82A788FB2062F00E000CE57B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		82A788FD2062F00E000CE57B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		82A789022062F00E000CE57B /* ConwayPrjTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ConwayPrjTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		82A789082062F00E000CE57B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		82A7890D2062F00E000CE57B /* ConwayPrjUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ConwayPrjUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		82A789112062F00E000CE57B /* ConwayPrjUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConwayPrjUITests.swift; sourceTree = "<group>"; };
-		82A789132062F00E000CE57B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		82A7892E206436BF000CE57B /* ConwayGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConwayGame.swift; sourceTree = "<group>"; };
 		82C9AF16207005320031CFE1 /* MessagesHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesHelper.swift; sourceTree = "<group>"; };
-		82C9AF19207024F50031CFE1 /* MissionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		82A2220A2067B6E30080F023 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		82A222192067C71D0080F023 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		82A222272067CE690080F023 /* Frameworks */ = {
+		82850C71208CA6820050BE82 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -118,27 +125,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		82A788FF2062F00E000CE57B /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		82A7890A2062F00E000CE57B /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		820D87112070338900645DDC /* Frameworks */ = {
+		8204525020850E94003D205F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				820D87122070338900645DDC /* XCTest.framework */,
+				82850C80208CAB9A0050BE82 /* XCTest.framework */,
+				8204525120850E95003D205F /* CoreData.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -147,11 +141,64 @@
 			isa = PBXGroup;
 			children = (
 				820D8714207034D400645DDC /* Main.storyboard */,
-				82A788F32062F00E000CE57B /* FreePlayViewController.swift */,
-				8211EE75206EABAB00E546BF /* MenuViewController.swift */,
-				8211EE78206EAEC800E546BF /* InstructionsViewController.swift */,
+				8207103E208A795000B2D4DC /* GameController.swift */,
+				8227BFE72072B93200462C26 /* LaunchScreen.storyboard */,
 			);
 			path = Main;
+			sourceTree = "<group>";
+		};
+		8227BFA62071527900462C26 /* LaunchImage.launchimage */ = {
+			isa = PBXGroup;
+			children = (
+				8227BFA72071527900462C26 /* LaunchImage-Landscape~ipad_1024x768.png */,
+				8227BFA82071527900462C26 /* LaunchImage-Portrait~ipad_768x1024.png */,
+				8227BFA92071527900462C26 /* LaunchImage-Portrait@2x~ipad_1536x2008.png */,
+				8227BFAA2071527900462C26 /* LaunchImage-568h@2x~iphone_640x1136.png */,
+				8227BFAB2071527900462C26 /* LaunchImage-1242@3x~iphone6s-portrait_1242x2208.png */,
+				8227BFAC2071527900462C26 /* LaunchImage-Landscape@2x~ipad_2048x1496.png */,
+				8227BFAD2071527900462C26 /* LaunchImage-1242@3x~iphone6s-landscape_2208x1242.png */,
+				8227BFAE2071527900462C26 /* LaunchImage-Landscape@2x~ipad_2048x1536.png */,
+				8227BFAF2071527900462C26 /* LaunchImage-750@2x~iphone6-landscape_1334x750.png */,
+				8227BFB02071527900462C26 /* LaunchImage~ipad.png */,
+				8227BFB12071527900462C26 /* LaunchImage-750@2x~iphone6-portrait_750x1334.png */,
+				8227BFB22071527900462C26 /* LaunchImage-Portrait@2x~ipad_1536x2048.png */,
+				8227BFB32071527900462C26 /* LaunchImage-Landscape~ipad_1024x748.png */,
+				8227BFB42071527900462C26 /* LaunchImage.png */,
+				8227BFB52071527900462C26 /* LaunchImage~iphone_640x960.png */,
+				8227BFB62071527900462C26 /* LaunchImage~iphone-320x480.png */,
+			);
+			path = LaunchImage.launchimage;
+			sourceTree = "<group>";
+		};
+		8227BFC72071528600462C26 /* AppIcon.appiconset */ = {
+			isa = PBXGroup;
+			children = (
+				8227BFC82071528600462C26 /* Icon-marketing-1024x1024.png */,
+				8227BFC92071528600462C26 /* Icon-20x20@1x.png */,
+				8227BFCA2071528600462C26 /* Icon-29x29@1x.png */,
+				8227BFCB2071528600462C26 /* Icon-76x76@2x.png */,
+				8227BFCC2071528600462C26 /* Icon-60x60@3x.png */,
+				8227BFCD2071528600462C26 /* Icon-40x40@2x.png */,
+				8227BFCE2071528600462C26 /* Icon-29x29@3x.png */,
+				8227BFCF2071528600462C26 /* Icon-29x29@2x.png */,
+				8227BFD02071528600462C26 /* Icon-76x76@1x.png */,
+				8227BFD12071528600462C26 /* Icon-40x40@3x.png */,
+				8227BFD22071528600462C26 /* Contents.json */,
+				8227BFD32071528600462C26 /* Icon-60x60@2x.png */,
+				8227BFD42071528600462C26 /* Icon-20x20@3x.png */,
+				8227BFD52071528600462C26 /* Icon-20x20@2x.png */,
+			);
+			path = AppIcon.appiconset;
+			sourceTree = "<group>";
+		};
+		82850C75208CA6820050BE82 /* ConwayGamePrjTests */ = {
+			isa = PBXGroup;
+			children = (
+				82850C92208CBE150050BE82 /* GameControllerTest.swift */,
+				82850C82208CAD2C0050BE82 /* ConwayGameTest.swift */,
+				82850C78208CA6820050BE82 /* Info.plist */,
+			);
+			path = ConwayGamePrjTests;
 			sourceTree = "<group>";
 		};
 		82A2223A2069612E0080F023 /* Layout */ = {
@@ -175,10 +222,9 @@
 			isa = PBXGroup;
 			children = (
 				82A788F02062F00E000CE57B /* ConwayPrj */,
-				82A789052062F00E000CE57B /* ConwayPrjTests */,
-				82A789102062F00E000CE57B /* ConwayPrjUITests */,
+				82850C75208CA6820050BE82 /* ConwayGamePrjTests */,
 				82A788EF2062F00E000CE57B /* Products */,
-				820D87112070338900645DDC /* Frameworks */,
+				8204525020850E94003D205F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -186,11 +232,7 @@
 			isa = PBXGroup;
 			children = (
 				82A788EE2062F00E000CE57B /* ConwayPrj.app */,
-				82A789022062F00E000CE57B /* ConwayPrjTests.xctest */,
-				82A7890D2062F00E000CE57B /* ConwayPrjUITests.xctest */,
-				82A2220D2067B6E30080F023 /* ConwayGameTest.xctest */,
-				82A2221C2067C71D0080F023 /* ViewControllerUITests.xctest */,
-				82A2222A2067CE690080F023 /* ViewControllerTest.xctest */,
+				82850C74208CA6820050BE82 /* ConwayGamePrjTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -198,7 +240,6 @@
 		82A788F02062F00E000CE57B /* ConwayPrj */ = {
 			isa = PBXGroup;
 			children = (
-				82C9AF18207024E60031CFE1 /* Missions */,
 				82A2223B206ABBAE0080F023 /* Model */,
 				82A2223A2069612E0080F023 /* Layout */,
 				82A7891F2062F023000CE57B /* Support */,
@@ -208,99 +249,37 @@
 			path = ConwayPrj;
 			sourceTree = "<group>";
 		};
-		82A789052062F00E000CE57B /* ConwayPrjTests */ = {
-			isa = PBXGroup;
-			children = (
-				82A222342067CEB90080F023 /* FreePlayViewControllerTest.swift */,
-				82A2220F2067B6E30080F023 /* ConwayGameTest.swift */,
-				82A789082062F00E000CE57B /* Info.plist */,
-			);
-			path = ConwayPrjTests;
-			sourceTree = "<group>";
-		};
-		82A789102062F00E000CE57B /* ConwayPrjUITests */ = {
-			isa = PBXGroup;
-			children = (
-				82A789112062F00E000CE57B /* ConwayPrjUITests.swift */,
-				82A789132062F00E000CE57B /* Info.plist */,
-			);
-			path = ConwayPrjUITests;
-			sourceTree = "<group>";
-		};
 		82A7891F2062F023000CE57B /* Support */ = {
 			isa = PBXGroup;
 			children = (
+				8227BFC72071528600462C26 /* AppIcon.appiconset */,
+				8227BFA62071527900462C26 /* LaunchImage.launchimage */,
 				82A788F12062F00E000CE57B /* AppDelegate.swift */,
 				82A788F82062F00E000CE57B /* Assets.xcassets */,
-				82A788FA2062F00E000CE57B /* LaunchScreen.storyboard */,
 				82C9AF16207005320031CFE1 /* MessagesHelper.swift */,
 			);
 			path = Support;
 			sourceTree = "<group>";
 		};
-		82C9AF18207024E60031CFE1 /* Missions */ = {
-			isa = PBXGroup;
-			children = (
-				82C9AF19207024F50031CFE1 /* MissionViewController.swift */,
-			);
-			path = Missions;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		82A2220C2067B6E30080F023 /* ConwayGameTest */ = {
+		82850C73208CA6820050BE82 /* ConwayGamePrjTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 82A222162067B6E30080F023 /* Build configuration list for PBXNativeTarget "ConwayGameTest" */;
+			buildConfigurationList = 82850C7D208CA6820050BE82 /* Build configuration list for PBXNativeTarget "ConwayGamePrjTests" */;
 			buildPhases = (
-				82A222092067B6E30080F023 /* Sources */,
-				82A2220A2067B6E30080F023 /* Frameworks */,
-				82A2220B2067B6E30080F023 /* Resources */,
+				82850C70208CA6820050BE82 /* Sources */,
+				82850C71208CA6820050BE82 /* Frameworks */,
+				82850C72208CA6820050BE82 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				82A222132067B6E30080F023 /* PBXTargetDependency */,
+				82850C7A208CA6820050BE82 /* PBXTargetDependency */,
 			);
-			name = ConwayGameTest;
-			productName = ConwayGameTest;
-			productReference = 82A2220D2067B6E30080F023 /* ConwayGameTest.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		82A2221B2067C71D0080F023 /* ViewControllerUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 82A222232067C71D0080F023 /* Build configuration list for PBXNativeTarget "ViewControllerUITests" */;
-			buildPhases = (
-				82A222182067C71D0080F023 /* Sources */,
-				82A222192067C71D0080F023 /* Frameworks */,
-				82A2221A2067C71D0080F023 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				82A222222067C71D0080F023 /* PBXTargetDependency */,
-			);
-			name = ViewControllerUITests;
-			productName = ViewControllerUITests;
-			productReference = 82A2221C2067C71D0080F023 /* ViewControllerUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
-		82A222292067CE690080F023 /* ViewControllerTest */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 82A222312067CE690080F023 /* Build configuration list for PBXNativeTarget "ViewControllerTest" */;
-			buildPhases = (
-				82A222262067CE690080F023 /* Sources */,
-				82A222272067CE690080F023 /* Frameworks */,
-				82A222282067CE690080F023 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				82A222302067CE690080F023 /* PBXTargetDependency */,
-			);
-			name = ViewControllerTest;
-			productName = ViewControllerTest;
-			productReference = 82A2222A2067CE690080F023 /* ViewControllerTest.xctest */;
+			name = ConwayGamePrjTests;
+			productName = ConwayGamePrjTests;
+			productReference = 82850C74208CA6820050BE82 /* ConwayGamePrjTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		82A788ED2062F00E000CE57B /* ConwayPrj */ = {
@@ -320,80 +299,25 @@
 			productReference = 82A788EE2062F00E000CE57B /* ConwayPrj.app */;
 			productType = "com.apple.product-type.application";
 		};
-		82A789012062F00E000CE57B /* ConwayPrjTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 82A789192062F00E000CE57B /* Build configuration list for PBXNativeTarget "ConwayPrjTests" */;
-			buildPhases = (
-				82A788FE2062F00E000CE57B /* Sources */,
-				82A788FF2062F00E000CE57B /* Frameworks */,
-				82A789002062F00E000CE57B /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				82A789042062F00E000CE57B /* PBXTargetDependency */,
-			);
-			name = ConwayPrjTests;
-			productName = ConwayPrjTests;
-			productReference = 82A789022062F00E000CE57B /* ConwayPrjTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		82A7890C2062F00E000CE57B /* ConwayPrjUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 82A7891C2062F00E000CE57B /* Build configuration list for PBXNativeTarget "ConwayPrjUITests" */;
-			buildPhases = (
-				82A789092062F00E000CE57B /* Sources */,
-				82A7890A2062F00E000CE57B /* Frameworks */,
-				82A7890B2062F00E000CE57B /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				82A7890F2062F00E000CE57B /* PBXTargetDependency */,
-			);
-			name = ConwayPrjUITests;
-			productName = ConwayPrjUITests;
-			productReference = 82A7890D2062F00E000CE57B /* ConwayPrjUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		82A788E62062F00E000CE57B /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0920;
-				LastUpgradeCheck = 0920;
+				LastSwiftUpdateCheck = 0930;
+				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = Jose;
 				TargetAttributes = {
-					82A2220C2067B6E30080F023 = {
-						CreatedOnToolsVersion = 9.2;
-						ProvisioningStyle = Automatic;
-						TestTargetID = 82A788ED2062F00E000CE57B;
-					};
-					82A2221B2067C71D0080F023 = {
-						CreatedOnToolsVersion = 9.2;
-						ProvisioningStyle = Automatic;
-						TestTargetID = 82A788ED2062F00E000CE57B;
-					};
-					82A222292067CE690080F023 = {
-						CreatedOnToolsVersion = 9.2;
+					82850C73208CA6820050BE82 = {
+						CreatedOnToolsVersion = 9.3;
+						LastSwiftMigration = 0930;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 82A788ED2062F00E000CE57B;
 					};
 					82A788ED2062F00E000CE57B = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
-					};
-					82A789012062F00E000CE57B = {
-						CreatedOnToolsVersion = 9.2;
-						ProvisioningStyle = Automatic;
-						TestTargetID = 82A788ED2062F00E000CE57B;
-					};
-					82A7890C2062F00E000CE57B = {
-						CreatedOnToolsVersion = 9.2;
-						ProvisioningStyle = Automatic;
-						TestTargetID = 82A788ED2062F00E000CE57B;
 					};
 				};
 			};
@@ -411,31 +335,13 @@
 			projectRoot = "";
 			targets = (
 				82A788ED2062F00E000CE57B /* ConwayPrj */,
-				82A789012062F00E000CE57B /* ConwayPrjTests */,
-				82A7890C2062F00E000CE57B /* ConwayPrjUITests */,
-				82A2220C2067B6E30080F023 /* ConwayGameTest */,
-				82A2221B2067C71D0080F023 /* ViewControllerUITests */,
-				82A222292067CE690080F023 /* ViewControllerTest */,
+				82850C73208CA6820050BE82 /* ConwayGamePrjTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		82A2220B2067B6E30080F023 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		82A2221A2067C71D0080F023 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		82A222282067CE690080F023 /* Resources */ = {
+		82850C72208CA6820050BE82 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -446,46 +352,51 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8227BFE32071528700462C26 /* Icon-20x20@2x.png in Resources */,
+				8227BFC42071527900462C26 /* LaunchImage.png in Resources */,
+				8227BFBF2071527900462C26 /* LaunchImage-750@2x~iphone6-landscape_1334x750.png in Resources */,
+				8227BFE12071528700462C26 /* Icon-60x60@2x.png in Resources */,
+				8227BFDE2071528700462C26 /* Icon-76x76@1x.png in Resources */,
+				8227BFC02071527900462C26 /* LaunchImage~ipad.png in Resources */,
+				8227BFD62071528700462C26 /* Icon-marketing-1024x1024.png in Resources */,
+				8227BFDB2071528700462C26 /* Icon-40x40@2x.png in Resources */,
+				8227BFDA2071528700462C26 /* Icon-60x60@3x.png in Resources */,
+				8227BFE82072B93200462C26 /* LaunchScreen.storyboard in Resources */,
+				8227BFDD2071528700462C26 /* Icon-29x29@2x.png in Resources */,
+				8227BFB82071527900462C26 /* LaunchImage-Portrait~ipad_768x1024.png in Resources */,
+				8227BFBA2071527900462C26 /* LaunchImage-568h@2x~iphone_640x1136.png in Resources */,
+				8227BFD92071528700462C26 /* Icon-76x76@2x.png in Resources */,
+				8227BFE02071528700462C26 /* Contents.json in Resources */,
+				8227BFE22071528700462C26 /* Icon-20x20@3x.png in Resources */,
 				82A788F92062F00E000CE57B /* Assets.xcassets in Resources */,
+				8227BFBC2071527900462C26 /* LaunchImage-Landscape@2x~ipad_2048x1496.png in Resources */,
+				8227BFBB2071527900462C26 /* LaunchImage-1242@3x~iphone6s-portrait_1242x2208.png in Resources */,
+				8227BFB92071527900462C26 /* LaunchImage-Portrait@2x~ipad_1536x2008.png in Resources */,
+				8227BFC12071527900462C26 /* LaunchImage-750@2x~iphone6-portrait_750x1334.png in Resources */,
+				8227BFBE2071527900462C26 /* LaunchImage-Landscape@2x~ipad_2048x1536.png in Resources */,
+				8227BFDF2071528700462C26 /* Icon-40x40@3x.png in Resources */,
+				8227BFBD2071527900462C26 /* LaunchImage-1242@3x~iphone6s-landscape_2208x1242.png in Resources */,
+				8227BFC22071527900462C26 /* LaunchImage-Portrait@2x~ipad_1536x2048.png in Resources */,
+				8227BFB72071527900462C26 /* LaunchImage-Landscape~ipad_1024x768.png in Resources */,
+				8227BFD82071528700462C26 /* Icon-29x29@1x.png in Resources */,
+				8227BFDC2071528700462C26 /* Icon-29x29@3x.png in Resources */,
+				8227BFC62071527900462C26 /* LaunchImage~iphone-320x480.png in Resources */,
+				8227BFC32071527900462C26 /* LaunchImage-Landscape~ipad_1024x748.png in Resources */,
 				820D8716207034D400645DDC /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		82A789002062F00E000CE57B /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		82A7890B2062F00E000CE57B /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				8227BFC52071527900462C26 /* LaunchImage~iphone_640x960.png in Resources */,
+				8227BFD72071528700462C26 /* Icon-20x20@1x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		82A222092067B6E30080F023 /* Sources */ = {
+		82850C70208CA6820050BE82 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		82A222182067C71D0080F023 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		82A222262067CE690080F023 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				82850C83208CAD2C0050BE82 /* ConwayGameTest.swift in Sources */,
+				82850C93208CBE150050BE82 /* GameControllerTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -493,62 +404,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8207103F208A795000B2D4DC /* GameController.swift in Sources */,
 				82A2223720680AD60080F023 /* SquareCell.swift in Sources */,
-				8211EE76206EABAB00E546BF /* MenuViewController.swift in Sources */,
-				82A788F42062F00E000CE57B /* FreePlayViewController.swift in Sources */,
 				82A2223920682B390080F023 /* CollectionLayout.swift in Sources */,
 				82A7892F206436BF000CE57B /* ConwayGame.swift in Sources */,
-				8211EE79206EAEC800E546BF /* InstructionsViewController.swift in Sources */,
 				82A788F22062F00E000CE57B /* AppDelegate.swift in Sources */,
-				82C9AF1A207024F50031CFE1 /* MissionViewController.swift in Sources */,
 				82C9AF17207005320031CFE1 /* MessagesHelper.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		82A788FE2062F00E000CE57B /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				82A222352067CEB90080F023 /* FreePlayViewControllerTest.swift in Sources */,
-				82A222172067BF790080F023 /* ConwayGameTest.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		82A789092062F00E000CE57B /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				82A789122062F00E000CE57B /* ConwayPrjUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		82A222132067B6E30080F023 /* PBXTargetDependency */ = {
+		82850C7A208CA6820050BE82 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 82A788ED2062F00E000CE57B /* ConwayPrj */;
-			targetProxy = 82A222122067B6E30080F023 /* PBXContainerItemProxy */;
-		};
-		82A222222067C71D0080F023 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 82A788ED2062F00E000CE57B /* ConwayPrj */;
-			targetProxy = 82A222212067C71D0080F023 /* PBXContainerItemProxy */;
-		};
-		82A222302067CE690080F023 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 82A788ED2062F00E000CE57B /* ConwayPrj */;
-			targetProxy = 82A2222F2067CE690080F023 /* PBXContainerItemProxy */;
-		};
-		82A789042062F00E000CE57B /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 82A788ED2062F00E000CE57B /* ConwayPrj */;
-			targetProxy = 82A789032062F00E000CE57B /* PBXContainerItemProxy */;
-		};
-		82A7890F2062F00E000CE57B /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 82A788ED2062F00E000CE57B /* ConwayPrj */;
-			targetProxy = 82A7890E2062F00E000CE57B /* PBXContainerItemProxy */;
+			targetProxy = 82850C79208CA6820050BE82 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -561,98 +432,41 @@
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		82A788FA2062F00E000CE57B /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				82A788FB2062F00E000CE57B /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		82A222142067B6E30080F023 /* Debug */ = {
+		82850C7B208CA6820050BE82 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = ConwayGameTest/Info.plist;
+				DEVELOPMENT_TEAM = 9W2SZN8P94;
+				INFOPLIST_FILE = ConwayGamePrjTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = josebarros.ConwayGameTest;
+				PRODUCT_BUNDLE_IDENTIFIER = josebarros.ConwayGamePrjTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ConwayPrj.app/ConwayPrj";
 			};
 			name = Debug;
 		};
-		82A222152067B6E30080F023 /* Release */ = {
+		82850C7C208CA6820050BE82 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = ConwayGameTest/Info.plist;
+				DEVELOPMENT_TEAM = 9W2SZN8P94;
+				INFOPLIST_FILE = ConwayGamePrjTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = josebarros.ConwayGameTest;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ConwayPrj.app/ConwayPrj";
-			};
-			name = Release;
-		};
-		82A222242067C71D0080F023 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = ViewControllerUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = josebarros.ViewControllerUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = ConwayPrj;
-			};
-			name = Debug;
-		};
-		82A222252067C71D0080F023 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = ViewControllerUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = josebarros.ViewControllerUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = ConwayPrj;
-			};
-			name = Release;
-		};
-		82A222322067CE690080F023 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = ViewControllerTest/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = josebarros.ViewControllerTest;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ConwayPrj.app/ConwayPrj";
-			};
-			name = Debug;
-		};
-		82A222332067CE690080F023 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = ViewControllerTest/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = josebarros.ViewControllerTest;
+				PRODUCT_BUNDLE_IDENTIFIER = josebarros.ConwayGamePrjTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -674,6 +488,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -681,6 +496,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -731,6 +547,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -738,6 +555,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -771,7 +589,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-3";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9W2SZN8P94;
 				INFOPLIST_FILE = ConwayPrj/Info.plist;
@@ -787,7 +605,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-3";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9W2SZN8P94;
 				INFOPLIST_FILE = ConwayPrj/Info.plist;
@@ -799,94 +617,14 @@
 			};
 			name = Release;
 		};
-		82A7891A2062F00E000CE57B /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = ConwayPrjTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = josebarros.ConwayPrjTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ConwayPrj.app/ConwayPrj";
-			};
-			name = Debug;
-		};
-		82A7891B2062F00E000CE57B /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = ConwayPrjTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = josebarros.ConwayPrjTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ConwayPrj.app/ConwayPrj";
-			};
-			name = Release;
-		};
-		82A7891D2062F00E000CE57B /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = ConwayPrjUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = josebarros.ConwayPrjUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = ConwayPrj;
-			};
-			name = Debug;
-		};
-		82A7891E2062F00E000CE57B /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = ConwayPrjUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = josebarros.ConwayPrjUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = ConwayPrj;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		82A222162067B6E30080F023 /* Build configuration list for PBXNativeTarget "ConwayGameTest" */ = {
+		82850C7D208CA6820050BE82 /* Build configuration list for PBXNativeTarget "ConwayGamePrjTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				82A222142067B6E30080F023 /* Debug */,
-				82A222152067B6E30080F023 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		82A222232067C71D0080F023 /* Build configuration list for PBXNativeTarget "ViewControllerUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				82A222242067C71D0080F023 /* Debug */,
-				82A222252067C71D0080F023 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		82A222312067CE690080F023 /* Build configuration list for PBXNativeTarget "ViewControllerTest" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				82A222322067CE690080F023 /* Debug */,
-				82A222332067CE690080F023 /* Release */,
+				82850C7B208CA6820050BE82 /* Debug */,
+				82850C7C208CA6820050BE82 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -905,24 +643,6 @@
 			buildConfigurations = (
 				82A789172062F00E000CE57B /* Debug */,
 				82A789182062F00E000CE57B /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		82A789192062F00E000CE57B /* Build configuration list for PBXNativeTarget "ConwayPrjTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				82A7891A2062F00E000CE57B /* Debug */,
-				82A7891B2062F00E000CE57B /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		82A7891C2062F00E000CE57B /* Build configuration list for PBXNativeTarget "ConwayPrjUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				82A7891D2062F00E000CE57B /* Debug */,
-				82A7891E2062F00E000CE57B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
