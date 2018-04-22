@@ -79,11 +79,13 @@ class GameController: UIViewController {
         self.generationsBar.setProgress(0.0, animated: true)
     }
     
-    func reload() {
-        gameLogic = ConwayGame(worldSize: worldSize)
-        gameLogic?.changeStatus(status: .STOPPED)
+    // REMARK: when game is over start again.
+    func restart() {
+        self.gameLogic?.changeStatus(status: .RUNNING)
+        self.gameLogic?.generations = 0
         self.generationsBar.setProgress(0.0, animated: true)
-        button.setTitle("Start", for: .normal)
+        button.setTitle("Pause", for: .normal)
+        runTimer()
     }
 
     // REMARK: change the state inside World referenced.
@@ -108,14 +110,8 @@ class GameController: UIViewController {
                     case .RUNNING:
                         self.gameLogic?.changeStatus(status: .PAUSED)
                         button.setTitle("Start", for: .normal)
-                        break
-                    case .STOPPED:
-                        self.gameLogic?.changeStatus(status: .RUNNING)
-                        button.setTitle("Pause", for: .normal)
-                        runTimer()
-                    case .OVER:
-                        self.timer?.invalidate()
-                        button.setTitle("Restart", for: .normal)
+                    case .STOPPED, .OVER:
+                        restart()
                     case .STABLE:
                         self.gameLogic?.changeStatus(status: .RUNNING)
                         button.setTitle("Pause", for: .normal)
@@ -127,13 +123,8 @@ class GameController: UIViewController {
                     }
                 }
             } else {
-                if self.gameLogic?.gameStatus != .OVER {
-                    MessagesHelper.showStandardMessage(reference: self, title: "Game isn't valid!", message: "Select some cells to start the game.")
-                } else {
-                    button.setTitle("Pause", for: .normal)
-                    reload()
-                    runTimer()
-                }
+                // if game is empty
+                MessagesHelper.showStandardMessage(reference: self, title: "Game isn't valid!", message: "Select some cells to start the game.")
             }
         } else {
             self.gameLogic?.changeStatus(status: .RUNNING)
