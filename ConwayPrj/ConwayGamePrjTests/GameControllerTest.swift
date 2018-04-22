@@ -1,23 +1,23 @@
 //
-//  ViewControllerTest.swift
-//  ConwayPrjTests
+//  GameControllerTest.swift
+//  ConwayGamePrjTests
 //
-//  Created by Jose on 25/03/2018.
+//  Created by Jose on 22/04/2018.
 //  Copyright © 2018 Jose. All rights reserved.
 //
 
 import XCTest
 @testable import ConwayPrj
 
-class FreePlayViewControllerTest: XCTestCase {
+class GameControllerTest: XCTestCase {
     
-    var controller: FreePlayViewController!
+    var controller: GameController!
     
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        controller = storyboard.instantiateViewController(withIdentifier: "FreePlayViewController") as! FreePlayViewController
+        controller = storyboard.instantiateViewController(withIdentifier: "GameController") as! GameController
         _ = controller.view
     }
     
@@ -36,27 +36,29 @@ class FreePlayViewControllerTest: XCTestCase {
     func testRUNNING() {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
+        let button = UIButton(type: .custom)
         controller.changeButton(cell: squareCell(), indexPath: IndexPath(row: 0, section: 0))
         controller.changeButton(cell: squareCell(), indexPath: IndexPath(row: 0, section: 1))
         controller.changeButton(cell: squareCell(), indexPath: IndexPath(row: 0, section: 2))
-        controller.startNewGame()
+        controller.startGame(button)
         XCTAssertEqual(controller.gameLogic?.gameStatus, .RUNNING)
-        controller.startNewGame()
+        controller.startGame(button)
     }
     
     func testDidSelectItemAt() {
         // override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)
         controller.collectionView((self.controller?.collectionView!)!, didSelectItemAt: IndexPath(row: 0, section: 0))
-     //    XCTAssertEqual(controller.gameLogic?.getCellAt(row: 0, col: 0), true)
+        //    XCTAssertEqual(controller.gameLogic?.getCellAt(row: 0, col: 0), true)
     }
     
     func testSTABLE() {
+        let button = UIButton(type: .custom)
         controller.changeButton(cell: squareCell(), indexPath: IndexPath(row: 0, section: 0)) // on
         controller.changeButton(cell: squareCell(), indexPath: IndexPath(row: 0, section: 1))
         controller.changeButton(cell: squareCell(), indexPath: IndexPath(row: 0, section: 2))
         controller.changeButton(cell: squareCell(), indexPath: IndexPath(row: 0, section: 0)) // off
         controller.changeButton(cell: squareCell(), indexPath: IndexPath(row: 0, section: 0)) // on again
-        controller.startNewGame()
+        controller.startGame(button)
         controller.advanceGeneration()
         controller.advanceGeneration()
         controller.advanceGeneration()
@@ -67,22 +69,23 @@ class FreePlayViewControllerTest: XCTestCase {
     }
     
     func testOVER() {
+        let button = UIButton(type: .custom)
         controller.changeButton(cell: squareCell(), indexPath: IndexPath(row: 0, section: 2))
-        controller.startNewGame()
+        controller.startGame(button)
         controller.advanceGeneration()
         controller.advanceGeneration()
         XCTAssertEqual(controller.gameLogic?.gameStatus, .OVER)
-        controller.startNewGame()
+        controller.startGame(button)
         controller.advanceGeneration()
         controller.changeButton(cell: squareCell(), indexPath: IndexPath(row: 0, section: 2))
-        controller.startNewGame()
+        controller.startGame(button)
     }
     
     func testINVALIDSTATE() {
-        controller.startNewGame()
+        let button = UIButton(type: .custom)
+        controller.startGame(button)
         XCTAssertEqual(controller.gameLogic?.gameStatus, .STOPPED)
-        controller.startNewGame()
-        controller.startNewGame()
+        controller.startGame(button)
+        controller.startGame(button)
     }
-    
 }

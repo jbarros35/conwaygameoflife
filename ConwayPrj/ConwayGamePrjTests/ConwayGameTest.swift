@@ -1,8 +1,8 @@
 //
 //  ConwayGameTest.swift
-//  ConwayGameTest
+//  ConwayGamePrjTests
 //
-//  Created by Jose on 25/03/2018.
+//  Created by Jose on 22/04/2018.
 //  Copyright © 2018 Jose. All rights reserved.
 //
 
@@ -20,13 +20,13 @@ class ConwayGameTest: XCTestCase {
         game = ConwayGame(worldSize: 10)
     }
     
+    func testFillWorld() {
+        XCTAssertEqual(game.world.count, 10)
+    }
+    
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
-    }
-    
-    func testFillWorld() {
-        XCTAssertEqual(game.world.count, 10)
     }
     
     func testToggleCell() {
@@ -68,7 +68,7 @@ class ConwayGameTest: XCTestCase {
         game.runGeneration()
         XCTAssertEqual("\(game.currentGeneration)", "\([(0, 0), (2, 0), (1, 0)])")
     }
-
+    
     func testFiveGenerationsBeyond() {
         // put a glider
         game.toggleCell(line: 2, col: 0)
@@ -84,5 +84,11 @@ class ConwayGameTest: XCTestCase {
         game.runGeneration()
         XCTAssertEqual("\(game.gameStatus!)", "RUNNING")
     }
+    
+    func testExample() {
+        // This is an example of a functional test case.
+        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    }
+    
     
 }
