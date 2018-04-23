@@ -1,0 +1,21 @@
+extends layout
+
+block content
+  div(class="panel panel-default")
+   div(class="panel-heading")
+    h3= title
+   div(class="panel-body")
+    p Welcome to #{title}
+    div(ng-app="myApp" ng-controller="ballOutCtrl")
+      br
+      div(class="alert alert-{{messageType}} alert-dismissible fade in" ng-show="showMessage")
+       a(href="#" class="close" data-dismiss="alert" aria-label="close") &times;
+       {{ResponseDetails}}
+      form(action="" method="POST" class="wrapper" name="submitForm")
+        div(class="form-group")
+         label(for="data") Data to send:
+          input(type="text" class="form-control" name="data" ng-model="data")
+       div(class="panel-footer")
+        div(class="btn-group")
+         button(type="button" class="btn btn-default" ng-click="send('move')") Submit
+         button(type="button" class="btn btn-default" ng-click="cleanForm()") Clean
