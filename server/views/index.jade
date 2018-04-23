@@ -15,7 +15,21 @@ block content
         div(class="form-group")
          label(for="data") Data to send:
           input(type="text" class="form-control" name="data" ng-model="data")
-       div(class="panel-footer")
+        div(class="panel-footer")
         div(class="btn-group")
-         button(type="button" class="btn btn-default" ng-click="send('move')") Submit
-         button(type="button" class="btn btn-default" ng-click="cleanForm()") Clean
+          button(type="button" class="btn btn-default" ng-click="send('move')") Submit
+          button(type="button" class="btn btn-default" ng-click="cleanForm()") Clean
+        br
+        div
+         table(class="table")
+          thead
+           tr
+            th Client ID
+            th Event
+            th Date
+            th Data
+           tr(ng-repeat="x in events")
+            td {{ x.id }}
+            td {{ x.event }}
+            td {{ x.date | date:'yyyy-MM-dd HH:mm:ss Z'}}
+            td {{ x.data }}
