@@ -49,7 +49,6 @@ class ClientViewController: UIViewController {
     }
     
     func connect() {
-        // socket = WebSocket(url: URL(string: "wss://ec2-35-177-188-209.eu-west-2.compute.amazonaws.com:443/")!, protocols: [])
         socket = WebSocket(url: URL(string: "wss://localhost:443/")!, protocols: [])
         // Set enabled cipher suites to AES 256 and AES 128
          socket?.enabledSSLCipherSuites = [TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256, TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384]
