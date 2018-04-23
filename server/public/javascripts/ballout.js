@@ -12,7 +12,6 @@ $scope.command = function (id) {
   window.WebSocket = window.WebSocket || window.MozWebSocket;
 
   var connection = new WebSocket('wss://localhost:443', 'echo-protocol');
-  // var connection = new WebSocket('wss://ec2-35-176-165-139.eu-west-2.compute.amazonaws.com:443', 'echo-protocol');
 
   connection.onopen = function () {
     // connection is opened and ready to use
@@ -21,7 +20,10 @@ $scope.command = function (id) {
 
   connection.onerror = function (error) {
     // an error occurred when sending/receiving data
-   console.log('err: '+error);
+    $scope.showMessage = true;
+		$scope.messageType = "danger";
+		$scope.ResponseDetails = "Error on connecting server";
+		$scope.$digest();
   };
 
   connection.onmessage = function (message) {
@@ -31,12 +33,12 @@ $scope.command = function (id) {
 	  var json = JSON.parse(message.data);
 	  // save client id on first connection
 	  if (json.event == 'client_id') {
-		$scope.client_uuid = json.id;
-		$scope.showMessage = true;
-		$scope.messageType = "success";
-		$scope.ResponseDetails = "Your client id: "+json.id;
-		$scope.$digest();
-		return;
+      $scope.client_uuid = json.id;
+      $scope.showMessage = true;
+      $scope.messageType = "success";
+      $scope.ResponseDetails = "Your client id: "+json.id;
+      $scope.$digest();
+      return;
 	  }
 	  // append to begin new events comming
 	  $scope.events.unshift({id: json.id, data:json.data, date: json.date, event: json.event});
