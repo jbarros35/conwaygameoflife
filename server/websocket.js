@@ -113,7 +113,7 @@ const interval = setInterval(function ping() {
     var lastActivity = getTimeElapsed(client.lastActivity);
     if (client.ws.isAlive === false 
       && client.ws.readyState !== WebSocket.OPEN
-    || lastActivity.minutes >= 5000 * 60) {
+    || lastActivity.ms >= 5000 * 60) {
       console.log("client id %s terminated last activity: %s", client.id, lastActivity.ms);
       client.ws.terminate();
       disconnected.push(client.id);
