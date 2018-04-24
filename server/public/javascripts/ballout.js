@@ -26,6 +26,13 @@ $scope.command = function (id) {
 		$scope.$digest();
   };
 
+  connection.onclose = function(message) {
+	$scope.showMessage = true;
+	$scope.messageType = "danger";
+	$scope.ResponseDetails = "Server connection was lost, check your connection.";
+	$scope.$digest();
+  }
+
   connection.onmessage = function (message) {
     // try to decode json (I assume that each message
     // from server is json)
@@ -52,15 +59,16 @@ $scope.command = function (id) {
   };
   
   $scope.send = function(action) {
-  // Tell the server this is client 1 (swap for client 2 of course)
-  connection.send(JSON.stringify({
-   id: $scope.client_uuid,
-   action: action,
-   data: $scope.data
-   }));
-   $scope.events.unshift({id: $scope.client_uuid, data:$scope.data, date: Date(), event: action});
-   $scope.data = [];
-   $scope.$digest();
+	 if (connection.readyState === connection.OPEN) {
+	  // Tell the server this is client 1 (swap for client 2 of course)
+		connection.send(JSON.stringify({
+		id: $scope.client_uuid,
+		action: action,
+		data: $scope.data
+		}));
+		$scope.events.unshift({id: $scope.client_uuid, data:$scope.data, date: Date(), event: action});
+		$scope.data = [];
+	 }
   };
   
   $scope.addData = function() {

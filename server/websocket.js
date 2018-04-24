@@ -64,10 +64,10 @@ wss.on('connection', function connection(ws, req) {
           date: new Date()
         }));
       // update client activity log
-      var client = getClientId(msg.id);
+      var client = getClientId(msg.id)[0];
       if (client) {
-        client.lastActivity = new Date();
-        client.isAlive = true;
+        client['lastActivity'] = new Date();
+        client['isAlive'] = true;
       }
     } catch(e) {
       console.error('message cannot be parsed '+message)
@@ -112,7 +112,8 @@ const interval = setInterval(function ping() {
   clientSet = clientSet.filter(function(client) {
     var lastActivity = getTimeElapsed(client.lastActivity);
     if (client.ws.isAlive === false 
-      && client.ws.readyState !== WebSocket.OPEN) {
+      && client.ws.readyState !== WebSocket.OPEN
+    || lastActivity.minutes >= 5000 * 60) {
       console.log("client id %s terminated last activity: %s", client.id, lastActivity.ms);
       client.ws.terminate();
       disconnected.push(client.id);
