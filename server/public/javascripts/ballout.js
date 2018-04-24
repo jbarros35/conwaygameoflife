@@ -7,7 +7,7 @@ $scope.command = function (id) {
 };
 
   $scope.events = [];
-     
+  $scope.data = [];
    // if user is running mozilla then use it's built-in WebSocket
   window.WebSocket = window.WebSocket || window.MozWebSocket;
 
@@ -58,7 +58,15 @@ $scope.command = function (id) {
    action: action,
    data: $scope.data
    }));
-   $scope.data = null;
+   $scope.events.unshift({id: $scope.client_uuid, data:$scope.data, date: Date(), event: action});
+   $scope.data = [];
+   $scope.$digest();
   };
   
+  $scope.addData = function() {
+	  $scope.data.unshift([Number($scope.data2), Number($scope.data1)]);
+	  $scope.data1 = null;
+	  $scope.data2 = null;
+  }
+
 });
