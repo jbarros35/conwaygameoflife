@@ -24,8 +24,9 @@ var server = https.createServer(options, function (req, res) {
 
 const wss = new WebSocket.Server({ server });
 // prototype client id and socket
-var Client = function(id, ws, date) {
+var Client = function(id, nick, ws, date) {
   this.id = id,
+  this.nick = nick,
   this.ws = ws,
   this.date = date,
   this.lastActivity = date
@@ -41,34 +42,41 @@ wss.on('connection', function connection(ws, req) {
   console.log('%s new client connected %s', new Date(), client_uuid);
 
   ws.isAlive = true;
-  clientSet.push(new Client(client_uuid, ws, new Date()));
+  clientSet.push(new Client(client_uuid, null, ws, new Date()));
   // send client id
   ws.send(
     JSON.stringify({ id: client_uuid, event: 'client_id'})
   );
-  // broadcast on connect new client
-  wss.broadcast(JSON.stringify(
-    {id: client_uuid, 
-      data: client_uuid,
-      date: new Date(),
-      event:'client_connected'}));
 
   ws.on('message', function incoming(message) {
     try {
       var msg = JSON.parse(message);
-      wss.broadcast(JSON.stringify(
-        {id: msg.id, 
-          event:'action', 
-          action: msg.action, 
-          data: msg.data,
-          date: new Date()
-        }));
       // update client activity log
       var client = getClientId(msg.id)[0];
       if (client) {
         client['lastActivity'] = new Date();
         client['isAlive'] = true;
       }
+      // first message from client is the nick-name set
+      if (msg.action === 'setnick') {
+        client['nick'] = msg.value;
+         // broadcast on connect new client
+         wss.broadcast(JSON.stringify(
+          {id: client_uuid, 
+            nick: msg.value,
+            data: [],
+            date: new Date(),
+            event:'client_connected'}));
+        return;
+      }
+      // the rest of messages...
+      wss.broadcast(JSON.stringify(
+        {id: msg.id, 
+          nick: client.nick,
+          event: msg.action, 
+          data: msg.data,
+          date: new Date()
+        }));
     } catch(e) {
       console.error('message cannot be parsed '+message)
     }
@@ -116,7 +124,7 @@ const interval = setInterval(function ping() {
     || lastActivity.ms >= 5000 * 60) {
       console.log("client id %s terminated last activity: %s", client.id, lastActivity.ms);
       client.ws.terminate();
-      disconnected.push(client.id);
+      disconnected.push(client);
       return false;
     } else {
       client.ws.isAlive = false;
@@ -126,8 +134,8 @@ const interval = setInterval(function ping() {
   });
 
   // tell all clients that someone disconnected
-  disconnected.forEach(function(id){
-    wss.broadcast(JSON.stringify({id: id, event:'disconnected'}));
+  disconnected.forEach(function(client){
+    wss.broadcast(JSON.stringify({id: client.id, date: Date(), nick: client.nick, event:'disconnected'}));
   });
   
 }, 30000);

@@ -7,7 +7,6 @@ block content
   div(class="panel-body")
    p Welcome to #{title}
    div(ng-app="myApp" ng-controller="ballOutCtrl")
-     br
      div(class="alert alert-{{messageType}} alert-dismissible fade in" ng-show="showMessage")
       a(href="#" class="close" data-dismiss="alert" aria-label="close") &times;
       {{ResponseDetails}}
@@ -31,15 +30,16 @@ block content
           tr(ng-repeat="line in data")
            td {{ line }}
        div(class="panel-footer")
-       div(class="btn-group")
-         button(type="button" class="btn btn-default" ng-click="send('move')") Submit
-         button(type="button" class="btn btn-default" ng-click="cleanForm()") Clean
+        div(class="btn-group")
+          button(type="button" id="connect" ng-disabled="connected" class="btn btn-default" data-toggle="modal" data-target="#myModal" ng-click="command('unlock')") Connect
+          button(type="button" class="btn btn-default" ng-disabled="!connected" ng-click="send('move')") Submit
+          button(type="button" class="btn btn-default" ng-disabled="!connected" ng-click="cleanForm()") Clean
        br
        div
         table(class="table")
          thead
           tr
-           th Client ID
+           th Nick
            th Event
            th Date
            th Data
@@ -48,3 +48,19 @@ block content
            td {{ x.event }}
            td {{ x.date | date:'yyyy-MM-dd HH:mm:ss Z'}}
            td {{ x.data }}
+     div(id="myModal" class="modal fade" role="dialog" my-modal)
+        div(class="modal-dialog")
+          div(class="modal-content")
+            div(class="modal-header")
+              button(type="button" class="close" data-dismiss="modal")
+              h4(class="modal-title") Game Server Connection
+            div(class="modal-body")
+              p Please put your nickname and connect to Game Server.
+              div(class="form-group")
+               label(for="nick") Your public address:
+                input(type="text" class="form-control" name="nick" ng-model="nick" maxlength="42" size="48")
+                span(ng-show="submitForm.address.$error.required") Nickname is mandatory
+            div(class="modal-footer")
+              div(class="btn-group")
+               button(type="button" class="btn btn-default" data-dismiss="modal" ng-hide="unlock") Close
+               button(type="button" class="btn btn-default" data-dismiss="modal" ng-click="connect()" ng-hide="unlock") Connect

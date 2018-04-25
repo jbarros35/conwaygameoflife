@@ -15,6 +15,7 @@
 		8279958D208E63F4003C05EF /* ConwayNetWorkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8279958C208E63F4003C05EF /* ConwayNetWorkTests.swift */; };
 		82B5E3BF208E822A009E481F /* cert.der in Resources */ = {isa = PBXBuildFile; fileRef = 82B5E3BE208E8229009E481F /* cert.der */; };
 		82B5E3C0208E822A009E481F /* cert.der in Resources */ = {isa = PBXBuildFile; fileRef = 82B5E3BE208E8229009E481F /* cert.der */; };
+		82B5E3C2208FB157009E481F /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B5E3C1208FB157009E481F /* TableViewCell.swift */; };
 		B3C697415CC3EB872CB15AA4 /* Pods_ConwayNetWork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D064D3BB45810EF8AF5483C /* Pods_ConwayNetWork.framework */; };
 		BCE8ED3B927566A5801EB7A3 /* Pods_ConwayNetWorkTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABB0584BAE16678502B4A743 /* Pods_ConwayNetWorkTests.framework */; };
 /* End PBXBuildFile section */
@@ -53,6 +54,7 @@
 		8279958C208E63F4003C05EF /* ConwayNetWorkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConwayNetWorkTests.swift; sourceTree = "<group>"; };
 		8279958E208E63F4003C05EF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		82B5E3BE208E8229009E481F /* cert.der */ = {isa = PBXFileReference; lastKnownFileType = file; path = cert.der; sourceTree = "<group>"; };
+		82B5E3C1208FB157009E481F /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		ABB0584BAE16678502B4A743 /* Pods_ConwayNetWorkTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ConwayNetWorkTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -148,6 +150,7 @@
 				8279957E208E63F3003C05EF /* Assets.xcassets */,
 				82799580208E63F3003C05EF /* LaunchScreen.storyboard */,
 				82799583208E63F3003C05EF /* Info.plist */,
+				82B5E3C1208FB157009E481F /* TableViewCell.swift */,
 			);
 			path = ConwayNetWork;
 			sourceTree = "<group>";
@@ -383,6 +386,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8279957A208E63F2003C05EF /* ClientViewController.swift in Sources */,
+				82B5E3C2208FB157009E481F /* TableViewCell.swift in Sources */,
 				82799578208E63F2003C05EF /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
